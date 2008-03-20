@@ -1,2 +1,2 @@
-class Track < DataMapper::Base
+class Track < Sequel::Model
 end
