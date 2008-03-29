@@ -1,0 +1,7 @@
+<h1><%= @track.name %></h1>
+
+<% if @map %>
+<h2>Map View</h2>
+<%= @map.to_html %>
+<%= @map.div(:width => 800, :height => 600) %>
+<% end %>

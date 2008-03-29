@@ -1,11 +1,6 @@
 require "pathname"
 require "cgi"
 
-# load the openid library
-# begin
-#   require "rubygems"
-#   require_gem "ruby-openid", ">= 1.0.2"
-# rescue LoadError
 require "openid"
 require 'openid/store/filesystem'
 require 'openid/extensions/sreg'
@@ -21,15 +16,11 @@ class SessionsController < ApplicationController
   # process the login request, disover the openid server, and
   # then redirect.
   def create
-    #openid_url = params[:openid_url]
-    openid_url = 'http://perham.net/mike'
-    p requested_url
+    openid_url = params[:openid_url]
 
     if request.post?
       req = consumer.begin(openid_url)
       req.add_extension_arg(OpenID::SReg::NS_URI_1_1, 'required', FIELDS * ',')
-#      sreg = OpenID::SReg::Request.from_openid_request(req)
-#      sreg.request_fields 
 
       return_to = url_for(:action => 'complete')
       trust_root = url_for(:controller=>'')
@@ -58,7 +49,7 @@ class SessionsController < ApplicationController
       end
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{response.identity_url}"
-      redirect_to :action => "welcome"
+      redirect_to tracks_path
       return
 
     when OpenID::Consumer::FAILURE
@@ -70,7 +61,6 @@ class SessionsController < ApplicationController
 
     when OpenID::Consumer::CANCEL
       flash[:notice] = 'Verification cancelled.'
-
     else
       flash[:notice] = 'Unknown response from OpenID server.'
     end
@@ -83,9 +73,6 @@ class SessionsController < ApplicationController
     redirect_to :action => 'show'
   end
     
-  def welcome
-  end
-
   private
   
   def requested_url

@@ -3,11 +3,8 @@
   <%= link_to(image_tag('logo.png', :alt => 'TracKnowledge'), '/', :id => 'logo') %>
 
   <fieldset id="signin-form">
-    <label for="email">Email:</label>
-    <%= text_field_tag :email %>
-
-    <label for="password">Password:</label>
-    <%= password_field_tag :password  %>
+    <label for="email">OpenID:</label>
+    <%= text_field_tag :openid_url %>
   </fieldset>
 
   <p><%= image_button "signin.png", :alt => "Sign in", :accesskey => "s" %></p>

@@ -1,7 +1,26 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+laguna_seca:
+  name: Laguna Seca Raceway
+  owner: Montrey Racing Association
+  country_code: US
+  latitude: 36.583899
+  longitude: -121.753492
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>
 
-# one:
-#   column: value
-#
-# two:
-#   column: value
+indy:
+  name: Indianapolis International Speedway
+  owner: Tony George
+  country_code: US
+  latitude: 36.583899
+  longitude: -121.753492
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>
+
+daytona:
+  name: Daytona
+  owner: The Francis Family
+  country_code: US
+  latitude: 36.583899
+  longitude: -121.753492
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>
