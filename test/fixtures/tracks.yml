@@ -2,8 +2,8 @@ laguna_seca:
   name: Laguna Seca Raceway
   owner: Montrey Racing Association
   country_code: US
-  latitude: 36.583899
-  longitude: -121.753492
+  lat: 36.583899
+  lng: -121.753492
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
@@ -11,8 +11,8 @@ indy:
   name: Indianapolis International Speedway
   owner: Tony George
   country_code: US
-  latitude: 36.583899
-  longitude: -121.753492
+  lat: 39.794656
+  lng: -86.234264
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
@@ -20,7 +20,7 @@ daytona:
   name: Daytona
   owner: The Francis Family
   country_code: US
-  latitude: 36.583899
-  longitude: -121.753492
+  lat: 29.203282
+  lng: -81.040045
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>

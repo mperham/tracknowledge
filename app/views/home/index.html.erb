@@ -1,1 +1,14 @@
-Welcome home.
+<h1>TracKnowledge</h1>
+<p>
+Welcome to TracKnowledge, your source for all things race track related!
+</p>
+
+<% if @closest %>
+<h2>Your Home Track</h2>
+
+<%= render :partial => 'tracks/track', :locals => { :track => @closest } %>
+
+<p>
+Based on your current location, this is the closest track we have information about.  Is there a closer track to you?  Let us know!
+</p>
+<% end %>

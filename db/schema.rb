@@ -9,30 +9,33 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 2) do
+ActiveRecord::Schema.define(:version => 4) do
 
   create_table "tracks", :force => true do |t|
-    t.string   "name",         :limit => 64,  :null => false
+    t.string   "name",         :limit => 64,  :default => "", :null => false
     t.string   "owner",        :limit => 128
-    t.string   "country_code", :limit => 3,   :null => false
-    t.float    "longitude"
-    t.float    "latitude"
+    t.string   "country_code", :limit => 3,   :default => "", :null => false
+    t.float    "lng"
+    t.float    "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "distance"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",         :limit => 64,  :null => false
-    t.string   "fullname",      :limit => 64,  :null => false
-    t.string   "postcode",      :limit => 16,  :null => false
-    t.string   "country",       :limit => 8,   :null => false
-    t.string   "language",      :limit => 8,   :null => false
-    t.string   "timezone",      :limit => 32,  :null => false
+    t.string   "email",         :limit => 64,  :default => "", :null => false
+    t.string   "fullname",      :limit => 64,  :default => "", :null => false
+    t.string   "postcode",      :limit => 16,  :default => "", :null => false
+    t.string   "country",       :limit => 8,   :default => "", :null => false
+    t.string   "language",      :limit => 8,   :default => "", :null => false
+    t.string   "timezone",      :limit => 32,  :default => "", :null => false
     t.string   "password_hash", :limit => 64
     t.string   "openid_url",    :limit => 128
     t.integer  "role"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "users", ["openid_url"], :name => "index_users_on_openid_url", :unique => true

@@ -1,4 +1,4 @@
 namespace :app do
-	task :setup => [:environment, 'db:fixtures:load'] do
+	task :setup => [:environment, 'db:migrate', 'db:fixtures:load'] do
 	end
 end

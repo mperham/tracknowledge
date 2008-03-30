@@ -45,8 +45,10 @@ class SessionsController < ApplicationController
       @user = User.find_by_openid_url(response.identity_url)
       unless @user
         @user = User.new(sreg_params(response))
+        @user.address = "#{@user.postalcode} #{@user.country_code}"
         @user.save!
       end
+      
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{response.identity_url}"
       redirect_to tracks_path

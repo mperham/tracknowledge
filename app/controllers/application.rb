@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def load_user
     @user = User.find(session[:user_id]) if session[:user_id]
   end
+  
+  def current_location
+    @user || session[:geo_location]
+  end
 end
