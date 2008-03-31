@@ -32,7 +32,7 @@ module GeoKit
     # Uses the stored location value from the cookie if it exists.  If
     # no cookie exists, calls out to the web service to get the location. 
     def retrieve_location_from_cookie_or_service
-      return YAML.load(cookies[:geo_location]) if cookies[:geo_location]
+      return YAML.load(cookies[:geo_location].to_s) if cookies[:geo_location]
       location = Geocoders::IpGeocoder.geocode(get_ip_address)
       return location.success ? location : nil
     end
@@ -41,7 +41,7 @@ module GeoKit
     # address.  No special handling here anymore.
     def get_ip_address
       ip = request.remote_ip
-      ip == '127.0.0.1' ? '70.116.30.180' : ip
+      ip == '127.0.0.1' ? '209.85.84.199' : ip
     end
   end
 end

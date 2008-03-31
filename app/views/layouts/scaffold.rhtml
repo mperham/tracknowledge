@@ -8,12 +8,19 @@
 		<%= GMap.header %>
 	</head>
 	<body onunload="GUnload()">
-		<div>
+		<div id="header">
+			<span id="banner" style="float: left;">
+				<%= link_to(image_tag('logo.png', :alt => 'TracKnowledge'), root_path)%>
+			</span>
+			<span id="session-status" style="float: left;">
 			<% if @user -%>
 				Hello, <%= @user.fullname %> (<%= link_to 'Logout', logout_session_path %>)
 			<% end -%>
 			<%= link_to "Login", session_path unless @user %>
+			</span>
 		</div>
-		<%= yield %>
+		<div id="content" style="clear: both;">
+			<%= yield %>
+		</div>
 	</body>
 </html>

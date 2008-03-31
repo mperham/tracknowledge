@@ -11,6 +11,23 @@
 
 ActiveRecord::Schema.define(:version => 4) do
 
+  create_table "track_versions", :force => true do |t|
+    t.integer  "track_id"
+    t.integer  "version"
+    t.string   "name",         :limit => 64,  :default => ""
+    t.string   "owner",        :limit => 128
+    t.string   "country_code", :limit => 3,   :default => ""
+    t.float    "lng"
+    t.float    "lat"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "year_built"
+    t.string   "designer",     :limit => 64
+    t.float    "length_in_km"
+    t.string   "address",      :limit => 128
+    t.string   "website",      :limit => 128
+  end
+
   create_table "tracks", :force => true do |t|
     t.string   "name",         :limit => 64,  :default => "", :null => false
     t.string   "owner",        :limit => 128
@@ -19,7 +36,12 @@ ActiveRecord::Schema.define(:version => 4) do
     t.float    "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.float    "distance"
+    t.integer  "version"
+    t.integer  "year_built"
+    t.string   "designer",     :limit => 64
+    t.float    "length_in_km"
+    t.string   "address",      :limit => 128
+    t.string   "website",      :limit => 128
   end
 
   create_table "users", :force => true do |t|

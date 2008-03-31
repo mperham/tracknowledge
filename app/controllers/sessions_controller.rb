@@ -45,13 +45,13 @@ class SessionsController < ApplicationController
       @user = User.find_by_openid_url(response.identity_url)
       unless @user
         @user = User.new(sreg_params(response))
-        @user.address = "#{@user.postalcode} #{@user.country_code}"
+        @user.address = "#{@user.postcode} #{@user.country}"
         @user.save!
       end
       
       session[:user_id] = @user.id
       flash[:notice] = "Logged in as #{response.identity_url}"
-      redirect_to tracks_path
+      redirect_to :controller => 'home'
       return
 
     when OpenID::Consumer::FAILURE
@@ -72,7 +72,8 @@ class SessionsController < ApplicationController
   
   def logout
     session[:user_id] = nil
-    redirect_to :action => 'show'
+    cookies[:geo_location] = nil
+    redirect_to :controller => 'home'
   end
     
   private

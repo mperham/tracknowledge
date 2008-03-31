@@ -1,4 +1,9 @@
 body {
 	font-size: 14px;
 	font-family: Helvetica, Sans-Serif;
+	background-color: #909090;
+}
+
+img {
+	border: none;
 }
