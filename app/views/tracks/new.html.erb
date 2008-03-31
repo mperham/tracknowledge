@@ -1,0 +1,34 @@
+<h1>Submit a Track</h1>
+
+<p>
+	Rules:
+	<ul>
+		<li>Only tracks devoted to competitive land-based motorsports are accepted.  This means no dog or horse tracks,	boat racing venues, velodromes, etc.</li>
+		<li>Types that are welcome: road racing, oval, dirt track, autocross, motocross, drag strip, go-kart.</li>
+		<li>All tracks must be open to the public or semi-private (members only).  Tracks owned by individuals or families for their own personal use are not accepted.</li>
+		<li>You will be credited with submitting this information.  Users who submit several high-quality submissions can earn the right to become a TracKnowledge editor!
+		<li>Submissions with incorrect or missing data will be deleted.</li>
+	</ul>
+</p>
+
+<strong>Fields marked with a * are required.</strong>
+<% form_for @track do |f| %>
+<table>
+	<tr><th>* Name:</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
+	<tr><th>* Owner:</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
+	<tr><th>* Address:</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
+	<tr><th>* Latitude<sup>1</sup>:</th><td><%= f.text_field :lat, :maxlength => 12 %></td></tr>
+	<tr><th>* Longitude:</th><td><%= f.text_field :lng, :maxlength => 12 %></td></tr>
+	<tr><th>* ISO Country Code (<%= link_to 'guide', 'http://www.bcpl.net/~j1m5path/isocodes.html', :target => '_new' %>):</th><td><%= f.text_field :country_code, :maxlength => 2 %></td></tr>
+	<tr><th>Website URL:</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
+	<tr><th>Designer:</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
+	<tr><th>Year Built:</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
+	<tr><th>Length<sup>2</sup> (in km):</th><td><%= f.text_field :length_in_km, :maxlength => 6 %></td></tr>
+</table>
+<%= submit_tag 'Submit' %>
+<% end %>
+
+<p>
+<sup>1</sup> Latitude and longitude can be discovered via <a href="http://maps.google.com">Google Maps</a>, <a href="http://geocoder.us/">Geocoder.us</a> or other mapping services.<br/>
+<sup>2</sup> If the track has multiple configurations, please enter the length of the most commonly used configuration or the longest configuration.
+</p>

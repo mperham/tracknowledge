@@ -8,6 +8,6 @@ Welcome to TracKnowledge, your source for all things race track related!
 <%= render :partial => 'tracks/track', :locals => { :track => @closest } %>
 
 <p>
-Based on your current location, this is the closest track we have information about.  Is there a closer track to you?  Let us know!
+Based on your current location, this is the closest track we have information about.  Is there a closer track to you?  <%= link_to 'Submit a Track', new_track_path %>
 </p>
 <% end %>

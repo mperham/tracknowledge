@@ -24,3 +24,12 @@ daytona:
   lng: -81.040045
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
+
+tws:
+  name: Texas World Speedway
+  country_code: US
+  lat: 30.537388
+  lng: -96.218348
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>
+  

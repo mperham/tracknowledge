@@ -50,21 +50,21 @@ class SessionsController < ApplicationController
       end
       
       session[:user_id] = @user.id
-      flash[:notice] = "Logged in as #{response.identity_url}"
-      redirect_to :controller => 'home'
+      #flash[:notice] = "Logged in as #{response.identity_url}"
+      redirect_to root_path
       return
 
     when OpenID::Consumer::FAILURE
       if response.identity_url
-        flash[:notice] = "Verification of #{response.identity_url} failed: #{response.message}"
+        flash[:error] = "Verification of #{response.identity_url} failed: #{response.message}"
       else
-        flash[:notice] = "Verification failed: #{response.message}"
+        flash[:error] = "Verification failed: #{response.message}"
       end
 
     when OpenID::Consumer::CANCEL
-      flash[:notice] = 'Verification cancelled.'
+      flash[:error] = 'Verification cancelled.'
     else
-      flash[:notice] = 'Unknown response from OpenID server.'
+      flash[:error] = 'Unknown response from OpenID server.'
     end
   
     redirect_to :action => 'show'
@@ -73,7 +73,7 @@ class SessionsController < ApplicationController
   def logout
     session[:user_id] = nil
     cookies[:geo_location] = nil
-    redirect_to :controller => 'home'
+    redirect_to root_path
   end
     
   private

@@ -7,3 +7,25 @@ body {
 img {
 	border: none;
 }
+
+#footer {
+	font-size: 0.8em;
+}
+
+th {
+	text-align: right;
+}
+
+.flash {
+	border: 1px black solid;
+	color: #FFF;
+	padding: 10px;
+}
+
+#error {
+	background-color: #A00;
+}
+
+#notice {
+	background-color: #0A0;
+}

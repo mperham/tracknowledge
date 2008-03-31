@@ -10,6 +10,13 @@
 	<body onunload="GUnload()">
 		<%= render :partial => 'shared/header' %>
 		<div id="content" style="clear: both;">
+			<% %w(error notice).each do |type| %>
+				<% if flash[type.to_sym] %>
+				<div class="flash" id="<%= type %>">
+					<%= flash[type.to_sym] %>
+				</div>
+				<% end %>
+			<% end %>
 			<%= yield %>
 		</div>
 		<%= render :partial => 'shared/footer' %>
