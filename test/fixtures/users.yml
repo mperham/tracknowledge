@@ -1,0 +1,13 @@
+mperham:
+  id: 1
+  email: mike@perham.net
+  fullname: Mike Perham
+  postcode: 78757
+  country: US
+  language: EN
+  timezone: America/Chicago
+  openid_url: http://perham.net/mike/
+  role: 2
+  lat: 30.3532
+  lng: -97.7337
+  

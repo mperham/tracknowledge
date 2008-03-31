@@ -2,7 +2,10 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  layout  'scaffold'
+  ActiveScaffold.set_defaults do |config| 
+    config.ignore_columns.add [:created_at, :updated_at, :lock_version, :version, :password_hash, :versions]
+  end
+  layout  'application'
   helper :all # include all helpers, all the time
 
   # See ActionController::RequestForgeryProtection for details
