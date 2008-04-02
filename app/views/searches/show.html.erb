@@ -1,0 +1,20 @@
+<h1>Search for Tracks</h1>
+<%= render :partial => 'filter' %>
+<% if @results %>
+	<table width="75%">
+		<thead>
+	    <tr>
+	      <%= sort_header_tag('name') %>
+	      <%= sort_header_tag('state') %>
+	      <%= sort_header_tag('country_code', :text => 'Country') %>
+	      <%= sort_header_tag('length_in_km', :text => 'Length (km)') %>
+	      <th>Address</th>
+	      <th>Website</th>
+	    </tr>
+	  </thead>
+		<tbody>
+			<%= render :partial => 'result', :collection => @results %>
+		</tbody>
+	</table>
+	<%= will_paginate @results %>
+<% end %>

@@ -9,39 +9,49 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 4) do
+ActiveRecord::Schema.define(:version => 5) do
+
+  create_table "track_blobs", :force => true do |t|
+    t.text "notes", :default => "", :null => false
+    t.text "tags",  :default => "", :null => false
+    t.text "text",  :default => "", :null => false
+  end
 
   create_table "track_versions", :force => true do |t|
     t.integer  "track_id"
     t.integer  "version"
-    t.string   "name",         :limit => 64,  :default => ""
-    t.string   "owner",        :limit => 128
-    t.string   "country_code", :limit => 3,   :default => ""
+    t.string   "name",          :limit => 64,  :default => ""
+    t.string   "owner",         :limit => 128
+    t.string   "country_code",  :limit => 3,   :default => ""
     t.float    "lng"
     t.float    "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "year_built"
-    t.string   "designer",     :limit => 64
+    t.string   "designer",      :limit => 64
     t.float    "length_in_km"
-    t.string   "address",      :limit => 128
-    t.string   "website",      :limit => 128
+    t.string   "address",       :limit => 128
+    t.string   "website",       :limit => 128
+    t.string   "state",         :limit => 2
+    t.integer  "track_blob_id"
   end
 
   create_table "tracks", :force => true do |t|
-    t.string   "name",         :limit => 64,  :default => "", :null => false
-    t.string   "owner",        :limit => 128
-    t.string   "country_code", :limit => 3,   :default => "", :null => false
+    t.string   "name",          :limit => 64,  :default => "", :null => false
+    t.string   "owner",         :limit => 128
+    t.string   "country_code",  :limit => 3,   :default => "", :null => false
     t.float    "lng"
     t.float    "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "version"
     t.integer  "year_built"
-    t.string   "designer",     :limit => 64
+    t.string   "designer",      :limit => 64
     t.float    "length_in_km"
-    t.string   "address",      :limit => 128
-    t.string   "website",      :limit => 128
+    t.string   "address",       :limit => 128
+    t.string   "website",       :limit => 128
+    t.string   "state",         :limit => 2
+    t.integer  "track_blob_id",                                :null => false
   end
 
   create_table "users", :force => true do |t|

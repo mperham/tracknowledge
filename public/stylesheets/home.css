@@ -1,5 +1,5 @@
 body {
-	font-size: 14px;
+	font-size: 1.2em;
 	font-family: Helvetica, Sans-Serif;
 	background-color: #909090;
 }
@@ -10,6 +10,7 @@ img {
 
 #footer {
 	font-size: 0.8em;
+	padding-top: 30px;
 }
 
 th {
@@ -28,4 +29,18 @@ th {
 
 #notice {
 	background-color: #0A0;
+}
+
+.info_bubble {
+	border: 1px thin solid;
+	padding: 10px;
+	-moz-border-radius: 10px;	
+}
+
+#home_track {
+	background-color: #fec
+}
+
+#contribute {
+	background-color: #def	
 }

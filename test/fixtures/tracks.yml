@@ -1,35 +1,43 @@
 laguna_seca:
   name: Laguna Seca Raceway
   owner: Montrey Racing Association
-  country_code: US
+  country_code: usa
+  state: ca
   lat: 36.583899
   lng: -121.753492
+  track_blob: laguna_seca_blob
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 indy:
   name: Indianapolis International Speedway
   owner: Tony George
-  country_code: US
+  country_code: usa
+  state: in
   lat: 39.794656
   lng: -86.234264
+  track_blob: indy_blob
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 daytona:
   name: Daytona
   owner: The Francis Family
-  country_code: US
-  lat: 29.203282
-  lng: -81.040045
+  country_code: usa
+  state: fl
+  lat: 29.184533
+  lng: -81.067808
+  track_blob: daytona_blob
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 tws:
   name: Texas World Speedway
-  country_code: US
+  country_code: usa
+  state: tx
   lat: 30.537388
   lng: -96.218348
+  track_blob: tws_blob
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
   

@@ -19,11 +19,12 @@
 	<tr><th>* Address:</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
 	<tr><th>* Latitude<sup>1</sup>:</th><td><%= f.text_field :lat, :maxlength => 12 %></td></tr>
 	<tr><th>* Longitude:</th><td><%= f.text_field :lng, :maxlength => 12 %></td></tr>
-	<tr><th>* ISO Country Code (<%= link_to 'guide', 'http://www.bcpl.net/~j1m5path/isocodes.html', :target => '_new' %>):</th><td><%= f.text_field :country_code, :maxlength => 2 %></td></tr>
+	<tr><th>* Country:</th><td><%= select(@track, :country_code, country_options) %></td></tr>
+	<tr><th>State:</th><td><%= select(@track, :state, state_options)  %></td></tr>
 	<tr><th>Website URL:</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
 	<tr><th>Designer:</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
 	<tr><th>Year Built:</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
-	<tr><th>Length<sup>2</sup> (in km):</th><td><%= f.text_field :length_in_km, :maxlength => 6 %></td></tr>
+	<tr><th>Length<sup>2</sup> (in km):</th><td><%= f.text_field :length_in_km, :maxlength => 6 %> (km = miles x 1.6)</td></tr>
 </table>
 <%= submit_tag 'Submit' %>
 <% end %>

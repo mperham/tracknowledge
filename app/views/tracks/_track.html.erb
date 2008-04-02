@@ -1,7 +1,6 @@
 <div class="track_entry">
-	<h2 style="float: left;"><%= link_to track.name, track_path(track) %></h2>
-	<span style="float: right;"></span>
-	<table style="clear: both;">
+	<h2><%= link_to track.name, track_path(track) %></h2>
+	<table>
 		<tr><th>Owner</th><td><%= track.owner %></td></tr>
 		<tr><th>Country</th><td><%= track.country_code %></td></tr>
 		<tr><th>Latitude</th><td><%= track.lat %></td></tr>

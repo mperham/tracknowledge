@@ -2,13 +2,16 @@
 	<span id="banner" style="float: left;">
 		<%= link_to(image_tag('logo.png', :alt => 'TracKnowledge', :size => '370x88'), root_path)%>
 	</span>
-	<span id="session-status" style="float: left;">
-	<% if @user -%>
-		Hello, <%= @user.fullname %> (<%= link_to 'Logout', logout_session_path -%>
-		<% if @user.is_admin? -%>
-			/ <%= link_to 'Admin', admin_tracks_path %>
-		<% end -%>)
-	<% end -%>
-	<%= link_to "Login", session_path unless @user %>
+	<span id="session-status" style="float: right;">
+		<%= link_to 'Search Tracks', new_search_path %>
+		| <%= link_to 'Forums', '#' %>
+		<% if @user -%>
+			| <%= link_to 'Logout', logout_session_path -%>
+			<% if @user.is_admin? -%>
+				| <%= link_to 'Admin', admin_tracks_path %>
+			<% end -%>
+		<% else %>
+			| <%= link_to "Login", session_path %>
+		<% end -%>
 	</span>
 </div>

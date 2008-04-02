@@ -1,0 +1,13 @@
+laguna_seca_blob:
+  notes: Nestled in the hills outside Monterey, CA, Laguna Seca ('Dry Lake' in Spanish) is a world-class racing facility which has hosted races for MotoGP, World Superbikes and American LeMans in the recent past.
+  tags: lagunaseca usgp
+
+indy_blob:
+  notes: The Brickyard is one of the most famous race tracks in the world.  Home to the famous Indianapolis 500 and the Indy Racing League, Indy also hosts races for NASCAR and Formula 1 each year.
+  tags: indy500
+  
+daytona_blob:
+  tags: daytona500
+
+tws_blob:
+  tags: tws

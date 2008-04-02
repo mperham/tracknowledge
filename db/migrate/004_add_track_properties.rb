@@ -5,6 +5,8 @@ class AddTrackProperties < ActiveRecord::Migration
     add_column :tracks, :length_in_km, :float
     add_column :tracks, :address, :string, :limit => 128
     add_column :tracks, :website, :string, :limit => 128
+    add_column :tracks, :state, :string, :limit => 2
+    add_column :tracks, :track_blob_id, :integer, :null => false
     Track.create_versioned_table
   end
 
@@ -14,6 +16,8 @@ class AddTrackProperties < ActiveRecord::Migration
     remove_column :tracks, :length_in_km
     remove_column :tracks, :address
     remove_column :tracks, :website
+    remove_column :tracks, :state
+    remove_column :tracks, :track_blob_id
     Track.drop_versioned_table
   end
 end

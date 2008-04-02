@@ -1,6 +1,9 @@
-<h1><%= @track.name %></h1>
+<h1><%= h @track.name %></h1>
 
-<h2>Details</h2>
+<h2>Description and History</h2>
+<%= content_tag('p', h(@track.notes)) %>
+<h2>Flickr Tags</h2>
+<p><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></p>
 
 <% if @map %>
 <h2>Map View</h2>
