@@ -6,6 +6,8 @@ laguna_seca:
   lat: 36.583899
   lng: -121.753492
   track_blob: laguna_seca_blob
+  website: http://www.laguna-seca.com/
+  
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
@@ -17,6 +19,8 @@ indy:
   lat: 39.794656
   lng: -86.234264
   track_blob: indy_blob
+  website: http://www.indianapolismotorspeedway.com/
+  address: Indianapolis, IN 46222
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
@@ -28,16 +32,31 @@ daytona:
   lat: 29.184533
   lng: -81.067808
   track_blob: daytona_blob
+  website: http://www.daytonaintlspeedway.com/
+  address: Daytona Beach, FL 32114
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>
+
+sepang:
+  name: Sepang International Circuit
+  country_code: mys
+  lat: 2.760319
+  lng: 101.738076
+  track_blob: sepang_blob
+  website: http://malaysiangp.com.my/
+  address: Sepang, Selangor Malaysia
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 tws:
   name: Texas World Speedway
+  address: College Station, TX 77845
   country_code: usa
   state: tx
   lat: 30.537388
   lng: -96.218348
   track_blob: tws_blob
+  website: http://www.texasworldspeedway.com/
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
   

@@ -1,8 +1,8 @@
 <tr>
 	<td><%= link_to result.name, track_url(result) %></td>
-	<td><%= result.state %></td>
+	<td><%= result.state ? result.state.upcase : nil %></td>
 	<td><%= result.country %></td>
 	<td><%= result.length_in_km %></td>
 	<td><%= result.address %></td>
-	<td><% link_to_if result.website, result.website, :target => '_new' %></td>
+	<td><%= link_to_if result.website, 'Website', result.website, :target => '_new' %></td>
 </tr>

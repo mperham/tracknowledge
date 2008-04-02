@@ -3,7 +3,8 @@
 		<%= link_to(image_tag('logo.png', :alt => 'TracKnowledge', :size => '370x88'), root_path)%>
 	</span>
 	<span id="session-status" style="float: right;">
-		<%= link_to 'Search Tracks', new_search_path %>
+		<%= link_to 'Contact Us', 'mailto:info@tracknowledge.org' %>
+		| <%= link_to 'Search Tracks', new_search_path %>
 		| <%= link_to 'Forums', '#' %>
 		<% if @user -%>
 			| <%= link_to 'Logout', logout_session_path -%>

@@ -20,7 +20,7 @@ class TracksController < ApplicationController
   end
   
   def show
-    @track = Track.find(params[:id])
+    @track = Track.find(params[:id], :include => [:track_blob, :categories])
     if @track.lat and @track.lng
     	@map = GMap.new("map_div_id")
     	@map.control_init(:large_map => true, :map_type => true)

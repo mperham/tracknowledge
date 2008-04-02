@@ -4,6 +4,18 @@ body {
 	background-color: #909090;
 }
 
+h1 {
+	font-size: 2.0em;
+}
+
+h2 {
+	font-size: 1.8em;
+}
+
+h3 {
+	font-size: 1.6em;
+}
+
 img {
 	border: none;
 }
@@ -19,8 +31,8 @@ th {
 
 .flash {
 	border: 1px black solid;
-	color: #FFF;
 	padding: 10px;
+	-moz-border-radius: 10px;	
 }
 
 #error {
@@ -28,7 +40,7 @@ th {
 }
 
 #notice {
-	background-color: #0A0;
+	background-color: #8A8;
 }
 
 .info_bubble {

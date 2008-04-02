@@ -1,9 +1,12 @@
 <h1><%= h @track.name %></h1>
-
-<h2>Description and History</h2>
-<%= content_tag('p', h(@track.notes)) %>
-<h2>Flickr Tags</h2>
-<p><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></p>
+<% p @track.categories %>
+<table>
+<% %w(name address owner country website notes).each do |prop| %>
+ <tr><th><%= prop.titleize %></th><td><%= @track.send(prop.to_sym) %></td></tr>
+<% end %>
+ <tr><th>Tags</th><td><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></td></tr>
+ <tr><th>Types</th><td><%= @track.categories.map(&:name).join(", ") %></td></tr>
+</table>
 
 <% if @map %>
 <h2>Map View</h2>

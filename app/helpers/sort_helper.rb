@@ -118,9 +118,9 @@ module SortHelper
     key, order = session[@sort_name][:key], session[@sort_name][:order]
     if key == column
       if order.downcase == 'asc'
-        icon, order = 'sort_asc', 'desc'
+        icon, order = 'sort_asc.gif', 'desc'
       else
-        icon, order = 'sort_desc', 'asc'
+        icon, order = 'sort_desc.gif', 'asc'
       end
     else
       icon, order = nil, 'asc'

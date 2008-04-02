@@ -1,0 +1,14 @@
+flat_track:
+  name: Flat Track
+motocross:
+  name: Motocross
+supermoto:
+  name: Supermoto
+oval:
+  name: Oval
+road:
+  name: Roadracing
+drag:
+  name: Drag Strip
+mini:
+  name: Go-Kart

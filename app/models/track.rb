@@ -5,12 +5,17 @@ class Track < ActiveRecord::Base
   # This blob should never be accessed directly.  Use #details instead
   # which will dynamically create the blob if necessary.
   belongs_to :track_blob
+  has_many :track_categories, :dependent => :destroy
+  has_many :categories, :through => :track_categories
   
+  validates_presence_of :name, :owner, :address, :lng, :lat, :country_code
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
   validates_numericality_of :lat, :greater_than => -90, :less_than => 90
   validates_numericality_of :lng, :greater_than => -180, :less_than => 180
   validates_numericality_of :year_built, :allow_nil => true, :only_integer => true, :greater_than => 1900, :less_than => 2020
   validates_numericality_of :length_in_km, :allow_nil => true, :greater_than => 0, :less_than => 30
+  
+  before_create :add_empty_blob
   
   def country
     country_lookup(self.country_code)
@@ -39,6 +44,6 @@ class Track < ActiveRecord::Base
   end
   
   def country_lookup(code)
-    code
+    code == 'usa' ? 'USA' : CountryCodes.find_by_a3(code)[:name]
   end
 end

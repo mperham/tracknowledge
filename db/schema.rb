@@ -9,12 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 5) do
+ActiveRecord::Schema.define(:version => 6) do
+
+  create_table "categories", :force => true do |t|
+    t.string "name", :limit => 32, :default => "", :null => false
+  end
 
   create_table "track_blobs", :force => true do |t|
     t.text "notes", :default => "", :null => false
     t.text "tags",  :default => "", :null => false
     t.text "text",  :default => "", :null => false
+  end
+
+  create_table "track_categories", :force => true do |t|
+    t.integer "category_id", :null => false
+    t.integer "track_id",    :null => false
   end
 
   create_table "track_versions", :force => true do |t|

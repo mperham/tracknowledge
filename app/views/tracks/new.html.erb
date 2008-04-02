@@ -11,21 +11,29 @@
 	</ul>
 </p>
 
-<strong>Fields marked with a * are required.</strong>
 <% form_for @track do |f| %>
+<div class="info_bubble">
+	<h3>Required</h3>
 <table>
-	<tr><th>* Name:</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
-	<tr><th>* Owner:</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
-	<tr><th>* Address:</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
-	<tr><th>* Latitude<sup>1</sup>:</th><td><%= f.text_field :lat, :maxlength => 12 %></td></tr>
-	<tr><th>* Longitude:</th><td><%= f.text_field :lng, :maxlength => 12 %></td></tr>
-	<tr><th>* Country:</th><td><%= select(@track, :country_code, country_options) %></td></tr>
-	<tr><th>State:</th><td><%= select(@track, :state, state_options)  %></td></tr>
-	<tr><th>Website URL:</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
-	<tr><th>Designer:</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
-	<tr><th>Year Built:</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
-	<tr><th>Length<sup>2</sup> (in km):</th><td><%= f.text_field :length_in_km, :maxlength => 6 %> (km = miles x 1.6)</td></tr>
+	<tr><th>Name</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
+	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
+	<tr><th>Address</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
+	<tr><th>Latitude<sup>1</sup></th><td><%= f.text_field :lat, :maxlength => 12 %></td></tr>
+	<tr><th>Longitude</th><td><%= f.text_field :lng, :maxlength => 12 %></td></tr>
+	<tr><th>Country</th><td><%= select(:track, :country_code, new_country_options) %></td></tr>
 </table>
+</div>
+<div class="info_bubble">
+	<h3>Optional</h3>
+	<p>Please enter this information if known and applicable to the track.</p>
+<table>
+	<tr><th>State</th><td><%= select(:track, :state, new_state_options)  %></td></tr>
+	<tr><th>Website URL</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
+	<tr><th>Designer</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
+	<tr><th>Year Built</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
+	<tr><th>Length<sup>2</sup> (in km)</th><td><%= f.text_field :length_in_km, :maxlength => 6 %> (km = miles x 1.6)</td></tr>
+</table>
+</div>
 <%= submit_tag 'Submit' %>
 <% end %>
 
