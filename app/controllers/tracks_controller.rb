@@ -5,6 +5,14 @@ class TracksController < ApplicationController
   
   def new
     @track = Track.new
+    @track.user_email = nil
+    @track.added_by = nil
+  end
+  
+  def random
+    rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
+    @track = Track.find(:all, :limit => "#{rand},1").first
+    render :action => 'show'
   end
   
   def create

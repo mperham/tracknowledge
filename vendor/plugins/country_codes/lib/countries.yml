@@ -186,12 +186,6 @@
   :numeric: 76
 
 -
-  :name: British Indian Ocean Territory
-  :a2: IO
-  :a3: IOT
-  :numeric: 86
-
--
   :name: Brunei Darussalam
   :a2: BN
   :a3: BRN
@@ -268,18 +262,6 @@
   :a2: CN
   :a3: CHN
   :numeric: 156
-
--
-  :name: Christmas Island
-  :a2: CX
-  :a3: CXR
-  :numeric: 162
-
--
-  :name: Cocos (Keeling) Islands
-  :a2: CC
-  :a3: CCK
-  :numeric: 166
 
 -
   :name: Colombia
@@ -414,24 +396,6 @@
   :numeric: 231
 
 -
-  :name: Falkland Islands
-  :a2: FK
-  :a3: FLK
-  :numeric: 238
-
--
-  :name: Faroe Islands
-  :a2: FO
-  :a3: FRO
-  :numeric: 234
-
--
-  :name: Fiji
-  :a2: FJ
-  :a3: FJI
-  :numeric: 242
-
--
   :name: Finland
   :a2: FI
   :a3: FIN
@@ -448,18 +412,6 @@
   :a2: GF
   :a3: GUF
   :numeric: 254
-
--
-  :name: French Polynesia
-  :a2: PF
-  :a3: PYF
-  :numeric: 258
-
--
-  :name: French Southern Lands
-  :a2: TF
-  :a3: ATF
-  :numeric: 260
 
 -
   :name: Gabon
@@ -562,12 +514,6 @@
   :a2: HT
   :a3: HTI
   :numeric: 332
-
--
-  :name: Heard and McDonald Islands
-  :a2: HM
-  :a3: HMD
-  :numeric: 334
 
 -
   :name: Honduras
@@ -972,12 +918,6 @@
   :numeric: 574
 
 -
-  :name: Northern Mariana Islands
-  :a2: MP
-  :a3: MNP
-  :numeric: 580
-
--
   :name: Norway
   :a2: 'NO'
   :a3: NOR
@@ -1104,36 +1044,6 @@
   :numeric: 654
 
 -
-  :name: Saint Kitts and Nevis
-  :a2: KN
-  :a3: KNA
-  :numeric: 659
-
--
-  :name: Saint Lucia
-  :a2: LC
-  :a3: LCA
-  :numeric: 662
-
--
-  :name: Saint Martin (French part)
-  :a2: MF
-  :a3: MAF
-  :numeric: 663
-
--
-  :name: Saint Pierre and Miquelon
-  :a2: PM
-  :a3: SPM
-  :numeric: 666
-
--
-  :name: Saint Vincent and the Grenadines
-  :a2: VC
-  :a3: VCT
-  :numeric: 670
-
--
   :name: Samoa
   :a2: WS
   :a3: WSM
@@ -1218,12 +1128,6 @@
   :numeric: 710
 
 -
-  :name: South Georgia and South Sandwich Islands
-  :a2: GS
-  :a3: SGS
-  :numeric: 239
-
--
   :name: Spain
   :a2: ES
   :a3: ESP
@@ -1246,12 +1150,6 @@
   :a2: SR
   :a3: SUR
   :numeric: 740
-
--
-  :name: Svalbard and Jan Mayen Islands
-  :a2: SJ
-  :a3: SJM
-  :numeric: 744
 
 -
   :name: Swaziland
@@ -1350,12 +1248,6 @@
   :numeric: 795
 
 -
-  :name: Turks and Caicos Islands
-  :a2: TC
-  :a3: TCA
-  :numeric: 796
-
--
   :name: Tuvalu
   :a2: TV
   :a3: TUV
@@ -1384,12 +1276,6 @@
   :a2: GB
   :a3: GBR
   :numeric: 826
-
--
-  :name: United States Minor Outlying Islands
-  :a2: UM
-  :a3: UMI
-  :numeric: 581
 
 -
   :name: United States of America
@@ -1444,12 +1330,6 @@
   :a2: VI
   :a3: VIR
   :numeric: 850
-
--
-  :name: Wallis and Futuna Islands
-  :a2: WF
-  :a3: WLF
-  :numeric: 876
 
 -
   :name: Western Sahara

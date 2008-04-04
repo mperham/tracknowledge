@@ -1,4 +1,3 @@
 class Category < ActiveRecord::Base
-  has_many :track_categories, :dependent => :destroy
-  has_many :tracks, :through => :track_categories
+  has_and_belongs_to_many :tracks, :join_table => 'track_categories'
 end

@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :session, :member => { :logout => :get }
   map.resource :home, :member => { :legal => :get }
   map.resource :search
-  map.resources :tracks
+  map.resources :tracks, :collection => { :random => :get }
   # Sample of regular route:
   #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
   # Keep in mind you can assign values other than :controller and :action

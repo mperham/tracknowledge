@@ -1,9 +1,16 @@
 <div class="track_entry">
 	<h2><%= link_to track.name, track_path(track) %></h2>
 	<table>
-		<tr><th>Owner</th><td><%= track.owner %></td></tr>
-		<tr><th>Country</th><td><%= track.country_code %></td></tr>
-		<tr><th>Latitude</th><td><%= track.lat %></td></tr>
-		<tr><th>Longitude</th><td><%= track.lng %></td></tr>
+		<% %w(address owner country).each do |prop| 
+			val = track.send(prop.to_sym)
+			next unless val %>
+		 <tr><th><%= prop.titleize %></th><td><%= val %></td></tr>
+		<% end %>
+		<% if track.website %>
+			<tr><th>Website</th><td><a href="<%= track.website %>"><%= track.website %></a></td></tr>
+		<% end %>
+		<% if track.categories.size > 0 %>
+			<tr><th>Used For</th><td><%= track.categories.map(&:name).join(", ") %></td></tr>
+		<% end %>
 	</table>
 </div>

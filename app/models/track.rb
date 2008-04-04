@@ -5,8 +5,7 @@ class Track < ActiveRecord::Base
   # This blob should never be accessed directly.  Use #details instead
   # which will dynamically create the blob if necessary.
   belongs_to :track_blob
-  has_many :track_categories, :dependent => :destroy
-  has_many :categories, :through => :track_categories
+  has_and_belongs_to_many :categories, :join_table => 'track_categories'
   
   validates_presence_of :name, :owner, :address, :lng, :lat, :country_code
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
