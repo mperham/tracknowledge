@@ -5,6 +5,7 @@
 	<span id="session-status" style="float: right;">
 		Search: <% form_tag('/search', :method => :get, :style => 'display: inline;') do %><%= text_field_tag :name, params[:name], { :size => 15, :maxlength => 50 } %><%= submit_tag 'Go!' %><% end %>
 		| <%= link_to 'Random!', random_tracks_path %>
+		| <%= link_to 'Store', products_path %>
 		| <%= link_to 'Forums', '#' %>
 		<% if @user -%>
 			| <%= link_to 'Logout', logout_session_path -%>

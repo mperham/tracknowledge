@@ -1,0 +1,17 @@
+<% category = params[:category] || 'tracks' %>
+<div id="store">
+	<div style="float: left;">
+	<%= render :partial => 'leftmenu' %>
+	</div>
+	<div style="float: right;">
+		<h2><%= category.titleize %></h2>
+		<div>
+			<%= render :partial => category %>
+		</div>
+		<p>
+			Tracknowledge is a free website run by and for motorsport fans.  Everything you buy here 
+			helps pay for the website server and hosting.
+		</p>
+	</div>
+</div>
+<div style="clear:both;"></div>
