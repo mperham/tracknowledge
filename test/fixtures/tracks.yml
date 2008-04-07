@@ -64,3 +64,15 @@ tws:
   created_at: <%= Time.now.utc.to_s(:db) %>
   updated_at: <%= Time.now.utc.to_s(:db) %>
   
+ironrock:
+  name: Iron Rock Raceway
+  address: Austin, TX 78719
+  country_code: usa
+  state: tx
+  lat: 30.200408
+  lng: -97.661633
+  track_blob: ironrock_blob
+  website: http://www.ironrockraceway.com/
+  categories: gokart
+  created_at: <%= Time.now.utc.to_s(:db) %>
+  updated_at: <%= Time.now.utc.to_s(:db) %>

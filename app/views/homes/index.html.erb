@@ -1,18 +1,21 @@
-<p>
-Welcome to TracKnowledge, your source for all things race track related!
-</p>
-
-<div id="home_track" class="info_bubble">
-	<%= render :partial => 'tracks/track', :locals => { :track => @closest } %>
-	<p>
-	Based on your current location, this is the closest track we have information about.  Is there a closer track to you?  <%= link_to 'Submit a Track', new_track_path %>
-	</p>
+<div id="home_tracks">
+	<h2>Your Home Tracks</h2>
+	<table>
+		<% @closest.each do |track| %>
+		<tr><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision track.distance, 1 %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
+		<% end %>
+	</table>
 </div>
-<div id="contribute" class="info_bubble">
-	Help us out!  You can contribute a number of ways:
+
+<div id="about_us">
+	<h2>About Us</h2>
+	<p>
+		Welcome to tracknowledge.org, where you can find all things related to motorsports and race tracks!
+	</p>
 	<ul>
-		<li>Join the discussion in our forums.  Come tell us about your favorite tracks!</li>
-		<li><%= link_to 'Add a track to our database', new_track_path %>.  It takes just a few minutes and some web searches to gather enough information for our database.</li>
-		<li>Click an ad, buy a book or contribute directly to our Paypal account to help defray the costs of running this community site.</li>
+		<li><%= link_to 'Find your favorite track in our database', new_search_path %></li>
+		<li><%= link_to 'Chat with fellow enthusiasts in our forums', '/forums' %></li>
+		<li><%= link_to 'Shop for your favorite fan in our store', products_path %></li>
+		<li><%= link_to 'Submit information about a Track in your area', new_track_path %></li>
 	</ul>
 </div>

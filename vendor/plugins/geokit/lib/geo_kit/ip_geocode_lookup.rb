@@ -33,6 +33,7 @@ module GeoKit
     # no cookie exists, calls out to the web service to get the location. 
     def retrieve_location_from_cookie_or_service
       return YAML.load(cookies[:geo_location].to_s) if cookies[:geo_location]
+      RAILS_DEFAULT_LOGGER.warn("################ Calling IP geocode service #################")
       location = Geocoders::IpGeocoder.geocode(get_ip_address)
       return location.success ? location : nil
     end

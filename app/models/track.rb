@@ -36,6 +36,10 @@ class Track < ActiveRecord::Base
     self.track_blob
   end
   
+  def to_param
+    "#{id}-#{name.gsub(/[^a-z0-9]+/i, '-')}"
+  end
+  
   private
   
   def add_empty_blob

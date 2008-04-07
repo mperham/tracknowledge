@@ -1,4 +1,4 @@
-flat_track:
+flattrack:
   name: Flat Track
 motocross:
   name: Motocross
@@ -10,5 +10,5 @@ road:
   name: Roadracing
 drag:
   name: Drag Strip
-mini:
+gokart:
   name: Go-Kart
