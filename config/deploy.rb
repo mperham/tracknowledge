@@ -9,6 +9,7 @@ set :deploy_to, "/var/www/#{application}"
 default_run_options[:pty] = true
 set :scm, :git
 set :user, 'mike'
+set :use_sudo, false
 
 role :app, "www.tracknowledge.org"
 role :web, "www.tracknowledge.org"
