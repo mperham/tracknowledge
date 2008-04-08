@@ -30,7 +30,7 @@ class Track < ActiveRecord::Base
   
   def details
     unless self.track_blob
-      self.track_blob = TrackBlob.create!
+      self.track_blob = TrackBlob.create!(:tags => '', :notes => '')
       self.save!
     end
     self.track_blob
@@ -43,7 +43,7 @@ class Track < ActiveRecord::Base
   private
   
   def add_empty_blob
-    self.track_blob = TrackBlob.create!
+    self.track_blob = TrackBlob.create!(:tags => '', :notes => '')
   end
   
   def country_lookup(code)
