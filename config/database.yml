@@ -16,6 +16,6 @@ test:
 production:
   adapter: mysql
   username: root
-  password: <%= IO.read('~/.db-password').strip %>
+  password: <%= IO.read('/var/lib/mysql/.db-password').strip %>
   database: track_production
   socket: /var/lib/mysql/mysql.sock
