@@ -1,6 +1,6 @@
 <h1>Search for Tracks</h1>
 <%= render :partial => 'filter' %>
-<% if @results.size > 0 %>
+<% if @results and @results.size > 0 %>
 	<table width="75%">
 		<thead>
 	    <tr>
@@ -17,7 +17,7 @@
 		</tbody>
 	</table>
 	<%= will_paginate @results %>
-<% else %>
+<% elsif @results %>
 <p>
 	<em>No tracks found.  So <%= link_to 'submit your favorite track', new_track_path %> to us!</em>
 </p>
