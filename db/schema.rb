@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 7) do
+ActiveRecord::Schema.define(:version => 8) do
 
   create_table "categories", :force => true do |t|
     t.string "name", :limit => 32, :default => "", :null => false
@@ -43,6 +43,9 @@ ActiveRecord::Schema.define(:version => 7) do
     t.string   "website",       :limit => 128
     t.string   "state",         :limit => 2
     t.integer  "track_blob_id"
+    t.string   "added_by",      :limit => 64,  :default => "tracknowledge.org",       :null => false
+    t.string   "user_email",    :limit => 128, :default => "admin@tracknowledge.org", :null => false
+    t.integer  "status",                       :default => 1,                         :null => false
   end
 
   create_table "tracks", :force => true do |t|
