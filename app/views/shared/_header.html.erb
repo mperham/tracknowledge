@@ -1,6 +1,6 @@
 <div id="header">
 	<span id="banner" style="float: left;">
-		<%= link_to(image_tag('logo.png', :alt => 'TracKnowledge', :size => '370x88'), root_path)%>
+		<%= link_to('TracKnowledge', root_path)%>
 	</span>
 	<span id="session-status" style="float: right;">
 		Search: <% form_tag('/search', :method => :get, :style => 'display: inline;') do %><%= text_field_tag :name, params[:name], { :size => 15, :maxlength => 50 } %><%= submit_tag 'Go!' %><% end %>
@@ -15,3 +15,4 @@
 		<% end -%>
 	</span>
 </div>
+<br style="clear: both"/>

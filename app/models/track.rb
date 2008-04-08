@@ -7,12 +7,13 @@ class Track < ActiveRecord::Base
   belongs_to :track_blob
   has_and_belongs_to_many :categories, :join_table => 'track_categories'
   
-  validates_presence_of :name, :owner, :address, :lng, :lat, :country_code
+  validates_presence_of :name, :address, :lng, :lat, :country_code
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
   validates_numericality_of :lat, :greater_than => -90, :less_than => 90
   validates_numericality_of :lng, :greater_than => -180, :less_than => 180
+  validates_numericality_of :capacity, :allow_nil => true, :only_integer => true, :greater_than => 0, :less_than => 1_000_000
   validates_numericality_of :year_built, :allow_nil => true, :only_integer => true, :greater_than => 1900, :less_than => 2020
-  validates_numericality_of :length_in_km, :allow_nil => true, :greater_than => 0, :less_than => 30
+  validates_numericality_of :length_in_km, :allow_nil => true, :greater_than => 0, :less_than => 50
   
   before_create :add_empty_blob
   

@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   private
   
   def ensure_admin
-    redirect_to show_sessions_path unless @user and @user.is_admin?
+    redirect_to session_path unless @user and @user.is_admin?
   end
 end
 

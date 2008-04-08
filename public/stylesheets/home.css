@@ -1,19 +1,19 @@
 body {
-	font-size: 1.2em;
+	font-size: 1.1em;
 	font-family: Helvetica, Sans-Serif;
 	background-color: #dddddd;
 }
 
 h1 {
-	font-size: 2.0em;
-}
-
-h2 {
 	font-size: 1.8em;
 }
 
-h3 {
+h2 {
 	font-size: 1.6em;
+}
+
+h3 {
+	font-size: 1.4em;
 }
 
 img {
@@ -22,7 +22,11 @@ img {
 
 #footer {
 	font-size: 0.8em;
-	padding-top: 30px;
+	margin-top: 30px;
+}
+
+#header {
+	margin-bottom: 20px;
 }
 
 th {
@@ -59,4 +63,17 @@ th {
 
 #leftmenu li {
 	text-align: right;
+}
+
+#banner {
+	font-size: 200%;
+	font-family: georgia, verdana;
+	letter-spacing: 5px;
+}
+#banner a {
+	color: #800000;
+	text-decoration: none;
+}
+#banner a:hover {
+	text-decoration: underline;
 }

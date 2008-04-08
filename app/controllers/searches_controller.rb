@@ -15,7 +15,8 @@ class SearchesController < ApplicationController
       :order => "tracks.#{sort_clause}",
       :include => []
     }
-    conditions = ['status = 1']
+    conditions = []
+    conditions << 'status = 1' unless admin?
     unless params[:name].blank?
       conditions << "name like #{Track.connection.quote('%'+params[:name]+'%')}"
     end

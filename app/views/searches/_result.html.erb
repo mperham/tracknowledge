@@ -1,4 +1,4 @@
-<tr>
+<tr<%= result.status == 0 ? ' style="background-color: #ffbbbb;"' : '' %>>
 	<td><%= link_to result.name, track_url(result) %></td>
 	<td><%= result.state ? result.state.upcase : nil %></td>
 	<td><%= result.country %></td>

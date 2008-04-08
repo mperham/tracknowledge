@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     @user = User.find(session[:user_id]) if session[:user_id]
   end
   
+  def admin?
+    @user && @user.is_admin?
+  end
+  
   def current_location
     @user || session[:geo_location]
   end
