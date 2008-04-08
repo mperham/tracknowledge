@@ -1,10 +1,14 @@
 <div id="home_tracks">
 	<h2>Your Home Tracks</h2>
-	<table>
-		<% @closest.each do |track| %>
-		<tr><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision track.distance, 1 %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
-		<% end %>
-	</table>
+	<% if @closest %>
+		<table>
+			<% @closest.each do |track| %>
+			<tr><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision track.distance, 1 %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
+			<% end %>
+		</table>
+	<% else %>
+		Uh oh, we couldn't find a location for <%= request.remote_ip %>.  Sorry!
+	<% end %>
 </div>
 
 <div id="about_us">
