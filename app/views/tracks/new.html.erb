@@ -16,10 +16,9 @@
 	<h3>Required</h3>
 <table>
 	<tr><th>Name</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
-	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
 	<tr><th>Address</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
-	<tr><th>Latitude<sup>1</sup></th><td><%= f.text_field :lat, :maxlength => 12 %></td></tr>
-	<tr><th>Longitude</th><td><%= f.text_field :lng, :maxlength => 12 %></td></tr>
+	<tr><th>Latitude<sup>1</sup></th><td><%= f.text_field :lat, :maxlength => 12 %>(example: 34.56789)</td></tr>
+	<tr><th>Longitude</th><td><%= f.text_field :lng, :maxlength => 12 %> (example: -110.12345)</td></tr>
 	<tr><th>Country</th><td><%= select(:track, :country_code, new_country_options) %></td></tr>
 	<tr><th>Your Email<sup>2</sup></th><td><%= f.text_field :user_email, :size => 64, :maxlength => 128 %></td></tr>
 </table>
@@ -31,8 +30,10 @@
 	<tr><th>State</th><td><%= select(:track, :state, new_state_options)  %></td></tr>
 	<tr><th>Website URL</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
 	<tr><th>Designer</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
+	<tr><th>Seating Capacity</th><td><%= f.text_field :capacity, :maxlength => 6 %></td></tr>
+	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
 	<tr><th>Year Built</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
-	<tr><th>Length<sup>3</sup> (in km)</th><td><%= f.text_field :length_in_km, :maxlength => 6 %> (km = miles x 1.6)</td></tr>
+	<tr><th>Length<sup>3</sup></th><td><%= f.text_field :length_in_km, :maxlength => 6 %> <select name="uom"><option value="km">Kilometers</option><option value="mi" selected="selected">Miles</option></select></td></tr>
 	<tr><th>Your Name<sup>4</sup></th><td><%= f.text_field :added_by, :maxlength => 64 %></td></tr>
 </table>
 </div>
