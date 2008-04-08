@@ -12,7 +12,10 @@ test:
   database: db/test.sqlite3
   timeout: 5000
 
+
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  timeout: 5000
+  adapter: mysql
+  username: root
+  password: <%= IO.read('~/.db-password').strip %>
+  database: track_production
+  socket: /var/lib/mysql/mysql.sock
