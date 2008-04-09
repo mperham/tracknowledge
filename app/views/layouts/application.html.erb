@@ -2,21 +2,22 @@
        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
   <head>
-   <title>TracKnowledge - <%= area %></title>
+   	<title>TracKnowledge - Race Track Discussion and Database</title>
+	 	<meta name="description" content="Your source for motorcycle, supermoto, motocross and autocross race track information and discussion.">
 		<%= javascript_include_tag :defaults %>
 		<%= stylesheet_link_tag 'home' %>
-		<%= GMap.header %>
+		<%= google_maps_header %>
 	</head>
-	<body onunload="GUnload()">
+	<body> <!-- onunload="GUnload()" -->
 		<%= render :partial => 'shared/header' %>
-		<div id="content" style="clear: both;">
-			<% %w(error notice).each do |type| %>
-				<% if flash[type.to_sym] %>
-				<div class="flash" id="<%= type %>">
-					<%= flash[type.to_sym] %>
-				</div>
-				<% end %>
+		<% %w(error notice).each do |type| %>
+			<% if flash[type.to_sym] %>
+			<div class="flash" id="<%= type %>">
+				<%= flash[type.to_sym] %>
+			</div>
 			<% end %>
+		<% end %>
+		<div id="content">
 			<%= yield %>
 		</div>
 		<%= render :partial => 'shared/footer' %>

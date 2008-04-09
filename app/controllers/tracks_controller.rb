@@ -1,8 +1,7 @@
 class TracksController < ApplicationController
-  def index
-    @tracks = Track.paginate :page => params[:page]
-  end
-  
+  caches_page :show
+  caches_page :new
+
   def new
     @track = Track.new
     @track.user_email = nil

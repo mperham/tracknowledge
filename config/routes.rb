@@ -1,5 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :products
+  map.connect 'products/:category', :controller => 'products', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   map.resource :session, :member => { :logout => :get }

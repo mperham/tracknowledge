@@ -12,4 +12,13 @@ module ApplicationHelper
     alt = html_options.delete(:alt) || ''
     content_tag(:button, image_tag(path, :alt => alt), html_options)
   end
+  
+  def google_maps_header
+    controller.controller_name == 'tracks' ?
+      GMap.header : ''
+	end
+	
+	def row_style(index)
+	  "class='#{index % 2 == 0 ? 'even' : 'odd'}'"
+  end
 end

@@ -12,7 +12,7 @@
 </p>
 
 <% form_for @track do |f| %>
-<div class="info_bubble">
+<div>
 	<h3>Required</h3>
 <table>
 	<tr><th>Name</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
@@ -34,7 +34,7 @@
 	</td></tr>
 </table>
 </div>
-<div class="info_bubble">
+<div>
 	<h3>Optional</h3>
 	<p>Please enter this information if known and applicable to the track.</p>
 <table>
