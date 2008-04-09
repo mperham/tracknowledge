@@ -1,13 +1,13 @@
 <h1><%= h @track.name %></h1>
-<% p @track.categories %>
 <div>
 	<div id="track_data" style="float: left">
 		<table>
-		<% %w(address owner country website added_by).each do |prop| 
+		<% %w(address owner country added_by).each do |prop| 
 			val = @track.send(prop.to_sym)
 			next unless val %>
 		 <tr><th><%= prop.titleize %></th><td><%= val %></td></tr>
 		<% end %>
+		 <tr><th>Website</th><td><%= link_to @track.website, @track.website %></td></tr>
 		 <tr><th>Tags</th><td><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></td></tr>
 		 <tr><th>Types</th><td><%= @track.categories.map(&:name).join(", ") %></td></tr>
 		</table>

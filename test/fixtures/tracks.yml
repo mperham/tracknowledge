@@ -12,8 +12,8 @@ laguna_seca:
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 indy:
-  name: Indianapolis International Speedway
-  owner: Tony George
+  name: Indianapolis Motor Speedway
+  owner: The Hulman-George Family
   country_code: usa
   state: in
   lat: 39.794656
@@ -26,8 +26,8 @@ indy:
   updated_at: <%= Time.now.utc.to_s(:db) %>
 
 daytona:
-  name: Daytona
-  owner: The Francis Family
+  name: Daytona International Speedway
+  owner: International Speedway Corporation
   country_code: usa
   state: fl
   lat: 29.184533

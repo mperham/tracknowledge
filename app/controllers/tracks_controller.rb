@@ -38,6 +38,7 @@ class TracksController < ApplicationController
     	@map = GMap.new("map_div_id")
     	@map.control_init(:large_map => true, :map_type => true)
     	@map.center_zoom_init([@track.lat,@track.lng], 16)
+    	@map.set_map_type_init(GMapType::G_SATELLITE_MAP)
   	end
   end
 end
