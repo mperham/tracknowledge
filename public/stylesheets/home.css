@@ -1,11 +1,19 @@
+/*
+ Colors:
+	#270000
+	#710000
+	#697158
+	#C20000
+	#95BB95
+	*/
 body {
 	font-size: 1.1em;
 	font-family: Helvetica, Sans-Serif;
-	background-color: #ffffff;
+	background-color: #E0FFF0;
 }
 
 h1, h2, h3, h4 {
-	color: #444;
+	color: #697158;
 	margin: 0;
 }
 
@@ -32,14 +40,15 @@ table {
   border-collapse:collapse;
 }
 td {
-  color:#333;
+  color:#270000;
   border-bottom:1px solid #e5eff8;
   border-left:1px solid #e5eff8;
   padding:.3em 1em;
 }
 th {
-	background-color: #d44;
-	color: #fff;
+  border-left:1px solid #e5eff8;
+	background-color: #C20000;
+	color: #B3BB95;
 	padding: 5px;
 }
 
@@ -91,9 +100,6 @@ tr.odd td {
 	-moz-border-radius: 10px;	
 }
 
-#leftmenu {
-	border: #800000 1px solid;
-}
 #leftmenu li {
 	text-align: right;
 }
@@ -104,9 +110,68 @@ tr.odd td {
 	letter-spacing: 5px;
 }
 #banner a {
-	color: #800000;
+	color: #270000;
 	text-decoration: none;
 }
 #banner a:hover {
 	text-decoration: underline;
 }
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
+
+body {line-height: 1;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after,q:before, q:after {content: ''; content: none;}
+
+:focus {outline: 0;} /* TODO: define focus styles */
+
+ins {text-decoration: none;} /* TODO: highlight inserts */
+del {text-decoration: line-through;}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {border: 1px solid #cccdcd; border-left: 0; border-bottom: 0; border-collapse: collapse; border-spacing: 0;}
+/* @end */
+
+/* @group Defaults */
+body {font-family: Verdana, Arial, sans-serif; font-size: 12px; padding: 10px;}
+h1, h2, h3, h4, h5, h6, p, img, ul, ol, li, dl, dt, dd, blockquote, pre, code, div, table, tr, th, td, tbody, tfoot, fieldset, legend, input, textarea, select, button {line-height: 18px;}
+
+h1, h2, h3, h4, h5, h6, dt, legend {background: transparent; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
+h1 {font-size: 18px;}
+h2 {border-bottom: 1px solid #666; clear: both; font-weight: normal; padding: 3px 18px;}
+h2 span {font-weight: bold;}
+h3 {}
+h4 {font-size: 12px; letter-spacing: 1px; padding: 3px 18px;}
+h4 span {font-weight: normal; text-transform: uppercase; font-size: 11px;}
+h5 {font-size: 14px;}
+h6 {font-size: 12px;}
+
+samp {color: #545454;}
+cite {font-size: 11px; font-style: normal; font-weight: bold;}
+blockquote, .note {font-family: Georgia, "Times Roman", "Times New Roman", serif;}
+blockquote {font-style: italic;}
+
+p, ul, ol, dl, blockquote, pre, table {margin-bottom: 18px;}
+
+dt {font-size: 11px; font-weight: bold; letter-spacing: 1px; margin-bottom: 9px; position: relative; text-transform: uppercase;}
+dt a {position: absolute; top: 4px; right: 0;}
+
+a {border: 0; outline: none;}
+a:link, a:visited {color: #001999; text-decoration: underline;}
+a:hover {color: #001999; text-decoration: none;}
+a:active {color: #343434; text-decoration: none;}
+
+table {empty-cells: show; margin-bottom: 18px;}
+th {background: #eee url(/images/th.gif) 0 100% repeat-x;}
+td {background: transparent url(/images/rows.gif) 0 100% no-repeat;}
+th, td {padding: 3px 9px; vertical-align: middle;}
+img {background: transparent; border: 0;}
+legend {}
+
+label, .bold {color: #535353; display: block; font-weight: bold; line-height: 18px;}
+input, select, textarea {line-height: 18px; margin: 0; margin-bottom: 18px;background-color:#eef;}
+input, textarea {border: 1px solid #999; outline: none;}
+button {background: none; cursor: pointer; margin-right: 9px; overflow: visible; vertical-align: middle; width: auto;}
+table select, table input, table textarea {margin: 3px 0;}
+/* @end */

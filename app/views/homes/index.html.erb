@@ -1,19 +1,7 @@
 <div id='home_graphic' style="width: 300px; height: 400px;">
 </div>
 <div id="text">
-	<div id="home_tracks" class="info_bubble">
-		<h2>Your Home Tracks</h2>
-		<% if @closest %>
-			<table>
-				<tr><th>Name</th><th>Distance (mi)</th><th>Type</th></tr>
-				<% @closest.each_with_index do |track, index| %>
-				<tr <%= row_style(index) %>><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision track.distance, 1 %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
-				<% end %>
-			</table>
-		<% else %>
-			Uh oh, we couldn't find your location based on your IP address '<%= request.remote_ip %>'.  Sorry!
-		<% end %>
-	</div>
+	<%= render :partial => 'home_tracks' %>
 
 	<div id="about_us" class="info_bubble">
 		<h2>About Us</h2>
@@ -28,4 +16,6 @@
 			<li><%= link_to 'Submit information about a Track in your area', '/tracks/new' %></li>
 		</ul>
 	</div>
+	
+	<%= render :partial => 'top_submitters' %>
 </div>
