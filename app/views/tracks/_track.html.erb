@@ -7,7 +7,7 @@
 		 <tr><th><%= prop.titleize %></th><td><%= val %></td></tr>
 		<% end %>
 		<% if track.website %>
-			<tr><th>Website</th><td><a href="<%= track.website %>"><%= track.website %></a></td></tr>
+			<tr><th>Website</th><td><a target="_new" href="<%= track.website %>"><%= track.website %></a></td></tr>
 		<% end %>
 		<% if track.categories.size > 0 %>
 			<tr><th>Used For</th><td><%= track.categories.map(&:name).join(", ") %></td></tr>
