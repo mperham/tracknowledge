@@ -7,7 +7,8 @@ class Track < ActiveRecord::Base
   belongs_to :track_blob
   has_and_belongs_to_many :categories, :join_table => 'track_categories'
   
-  validates_presence_of :name, :address, :lng, :lat, :country_code
+  validates_presence_of :name, :lng, :lat, :country_code
+  validates_presence_of :state, :message => 'is required for tracks in the USA', :if => Proc.new { |track| track.country_code == 'usa' }
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
   validates_numericality_of :lat, :greater_than => -90, :less_than => 90
   validates_numericality_of :lng, :greater_than => -180, :less_than => 180
