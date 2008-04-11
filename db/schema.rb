@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 11) do
 
   create_table "categories", :force => true do |t|
     t.string "name", :limit => 32, :default => "", :null => false
@@ -21,10 +21,12 @@ ActiveRecord::Schema.define(:version => 10) do
     t.text "text",  :default => "", :null => false
   end
 
-  create_table "track_categories", :force => true do |t|
+  create_table "track_categories", :id => false, :force => true do |t|
     t.integer "category_id", :null => false
     t.integer "track_id",    :null => false
   end
+
+  add_index "track_categories", ["track_id"], :name => "index_track_categories_on_track_id"
 
   create_table "track_versions", :force => true do |t|
     t.integer  "track_id"
