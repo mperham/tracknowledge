@@ -24,7 +24,7 @@ ActionController::Routing::Routes.draw do |map|
   #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
 
   map.namespace :admin do |admin|
-    admin.resources :tracks, :active_scaffold => true
+    admin.resources :tracks, :active_scaffold => true, :member => { :approve => :get }
   end
 
   # You can have the root of your site routed with map.root -- just remember to delete public/index.html.

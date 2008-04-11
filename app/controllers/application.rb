@@ -3,7 +3,7 @@
 
 class ApplicationController < ActionController::Base
   ActiveScaffold.set_defaults do |config| 
-    config.ignore_columns.add [:created_at, :updated_at, :lock_version, :version, :password_hash, :versions]
+    config.ignore_columns.add [:created_at, :updated_at, :lock_version, :version, :password_hash, :versions, :track_blob]
   end
   layout  'application'
   helper :all # include all helpers, all the time

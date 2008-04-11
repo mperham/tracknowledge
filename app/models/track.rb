@@ -27,6 +27,15 @@ class Track < ActiveRecord::Base
     details.notes
   end
   
+  def approved?
+    status == 1
+  end
+  
+  def approve!
+    self.status = 1
+    save!
+  end
+  
   def tags
     @tags ||= details.tags.split(' ')
   end
