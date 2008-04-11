@@ -3,7 +3,7 @@ ActionController::Routing::Routes.draw do |map|
 
   # The priority is based upon order of creation: first created -> highest priority.
   map.resource :session, :member => { :logout => :get }
-  map.resource :home, :member => { :legal => :get }
+  map.resource :home, :member => { :legal => :get, :about_us => :get }
   map.resource :search
   map.resources :tracks, :collection => { :random => :get }
   # Sample of regular route:
