@@ -19,7 +19,7 @@ class TracksController < ApplicationController
     @track = Track.new(params[:track])
     # Update length if the user inputed in miles
     @track.length_in_km = @track.length_in_km * 1.6 if params[:uom] == 'mi'
-    @track.status = 0
+    @track.status = (@track.user_email =~ /@tracknowledge.org/ ? 1 : 0)
 
     if @track.save
       flash[:notice] = 'Your track entry has been submitted.  NOTE: It will not be visible until it has verified by our editors. Thank you!'

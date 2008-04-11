@@ -39,7 +39,7 @@
 <table>
 	<tr><th>State</th><td><%= select(:track, :state, new_state_options)  %></td></tr>
 	<tr><th>Address</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
-	<tr><th>Website URL</th><td><%= f.text_field :website, :maxlength => 64 %></td></tr>
+	<tr><th>Website URL</th><td><%= f.text_field :website, :size => 64, :maxlength => 128 %></td></tr>
 	<tr><th>Designer</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
 	<tr><th>Seating Capacity</th><td><%= f.text_field :capacity, :maxlength => 6 %></td></tr>
 	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
