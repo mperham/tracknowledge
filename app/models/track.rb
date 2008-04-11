@@ -10,6 +10,7 @@ class Track < ActiveRecord::Base
   validates_presence_of :name, :lng, :lat, :country_code
   validates_presence_of :state, :message => 'is required for tracks in the USA', :if => Proc.new { |track| track.country_code == 'usa' }
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
+  validates_format_of :website, :message => 'must be a full URL, starting with http://', :if => Proc.new { |track| !track.website.blank? }, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   validates_numericality_of :lat, :greater_than => -90, :less_than => 90
   validates_numericality_of :lng, :greater_than => -180, :less_than => 180
   validates_numericality_of :capacity, :allow_nil => true, :only_integer => true, :greater_than => 0, :less_than => 1_000_000
