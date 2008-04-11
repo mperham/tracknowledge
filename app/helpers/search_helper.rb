@@ -9,7 +9,6 @@ module SearchHelper
   	['Colorado', 'co'], 
   	['Connecticut', 'ct'], 
   	['Delaware', 'de'], 
-  	['District Of Columbia', 'dc'], 
   	['Florida', 'fl'],
   	['Georgia', 'ga'],
   	['Hawaii', 'hi'], 
