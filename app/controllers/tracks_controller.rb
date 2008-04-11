@@ -11,6 +11,7 @@ class TracksController < ApplicationController
   def random
     rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
     @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{rand},1").first
+    @map = map_for @track
     render :action => 'show'
   end
   
@@ -33,11 +34,16 @@ class TracksController < ApplicationController
   
   def show
     @track = Track.find(params[:id], :include => [:track_blob, :categories])
-    if @track.lat and @track.lng
-    	@map = GMap.new("map_div_id")
-    	@map.control_init(:large_map => true, :map_type => true)
-    	@map.center_zoom_init([@track.lat,@track.lng], 16)
-    	@map.set_map_type_init(GMapType::G_SATELLITE_MAP)
-  	end
+    @map = map_for @track
+  end
+  
+  private
+  
+  def map_for(track)
+  	map = GMap.new("map_div_id")
+  	map.control_init(:large_map => true, :map_type => true)
+  	map.center_zoom_init([@track.lat,@track.lng], 16)
+  	map.set_map_type_init(GMapType::G_SATELLITE_MAP)
+  	map
   end
 end

@@ -26,7 +26,10 @@
 <div style="width: 800px; clear: both; padding-top: 30px;">
 <h2>Map View</h2>
 <% if @map %>
+<!-- here's the track -->
 <%= @map.to_html %>
 <%= @map.div(:width => 800, :height => 600) %>
+<% else %>
+ <em>No track map found.</em>
 <% end %>
 </div>
