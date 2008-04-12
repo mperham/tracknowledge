@@ -55,7 +55,7 @@ module SearchHelper
   def state_options
     @@cached_states ||= begin
       valid = Track.connection.select_values("select distinct state from tracks")
-      STATE_OPTIONS.delete_if {|entry| not (entry[1].blank? or valid.include? entry[1])}
+      STATE_OPTIONS.dup.delete_if {|entry| not (entry[1].blank? or valid.include? entry[1])}
     end
   end
   
