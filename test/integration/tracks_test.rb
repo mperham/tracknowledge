@@ -37,7 +37,8 @@ class TracksTest < ActionController::IntegrationTest
       post tracks_path, {:track => {:name => 'Super Track!', :address => '123 Fake St', 
 				:lat => '30.45', :lng => '-100.23', :country_code => 'mex', :user_email => 'mike@perham.net',
 				:state => 'fl', :website => 'http://perham.net', :designer => 'Tilke and Associates', :capacity => '45000',
-				:owner => 'Mike Perham', :year_built => '1954', :length_in_km => '6.34', :added_by => 'George' }, :uom => 'mi'
+				:owner => 'Mike Perham', :year_built => '1954', :length_in_km => '6.34', :added_by => 'George', :turns => '12',
+				:wikipedia_url => 'http://en.wikipedia.org/wiki/Some_track' }, :uom => 'mi'
 			}
 			after = Track.count
 			assert_equal before + 1, after

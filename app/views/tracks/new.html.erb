@@ -40,12 +40,14 @@
 	<tr><th>State</th><td><%= select(:track, :state, new_state_options)  %></td></tr>
 	<tr><th>Address</th><td><%= f.text_field :address, :maxlength => 64 %></td></tr>
 	<tr><th>Website URL</th><td><%= f.text_field :website, :size => 64, :maxlength => 128 %></td></tr>
-	<tr><th>Designer</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
+	<tr><th>Wikipedia Link<sup>3</sup></th><td><%= f.text_field :wikipedia_url, :size => 64, :maxlength => 128 %></td></tr>
 	<tr><th>Seating Capacity</th><td><%= f.text_field :capacity, :maxlength => 6 %></td></tr>
-	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
+	<tr><th>Turns</th><td><%= f.text_field :turns, :maxlength => 4 %></td></tr>
 	<tr><th>Year Built</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>
-	<tr><th>Length<sup>3</sup></th><td><%= f.text_field :length_in_km, :maxlength => 6 %> <select name="uom"><%= options_for_select [['kilometers', 'km'], ['miles', 'mi']], params[:uom] %></select></td></tr>
-	<tr><th>Your Name<sup>4</sup></th><td><%= f.text_field :added_by, :maxlength => 64 %></td></tr>
+	<tr><th>Owner</th><td><%= f.text_field :owner, :maxlength => 64 %></td></tr>
+	<tr><th>Designer</th><td><%= f.text_field :designer, :maxlength => 64 %></td></tr>
+	<tr><th>Length<sup>4</sup></th><td><%= f.text_field :length_in_km, :maxlength => 6 %> <select name="uom"><%= options_for_select [['kilometers', 'km'], ['miles', 'mi']], params[:uom] %></select></td></tr>
+	<tr><th>Your Name<sup>5</sup></th><td><%= f.text_field :added_by, :maxlength => 64 %></td></tr>
 </table>
 </div>
 <%= submit_tag 'Submit' %>
@@ -54,6 +56,7 @@
 <ol style="font-size: 0.8em;">
 <li>Latitude and longitude can be discovered via <a href="http://maps.google.com">Google Maps</a>, <a href="http://geocoder.us/">Geocoder.us</a> or other mapping services.</li>
 <li>The email will be used only to contact you about this submission.  No newsletters or spam, we promise!</li>
+<li>The address of the Wikipedia entry associated with this track.  Must start with "http://en.wikipedia.org/wiki/".</li>
 <li>If the track has multiple configurations, please enter the length of the most commonly used configuration or the longest configuration.</li>
 <li>This name will appear on the web page for this track.  Don't enter anything if you want to remain anonymous.</li>
 </ol>

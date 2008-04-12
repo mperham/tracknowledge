@@ -1,13 +1,16 @@
 <div class="track_entry">
-	<h2><%= link_to track.name, track_path(track) %></h2>
+	<h2><%= link_to h(track.name), track_path(track) %></h2>
 	<table>
-		<% %w(address owner country).each do |prop| 
+		<% %w(address owner country turns capacity designer length_in_km year_built).each do |prop| 
 			val = track.send(prop.to_sym)
 			next unless val %>
-		 <tr><th><%= prop.titleize %></th><td><%= val %></td></tr>
+		 <tr><th><%= prop.titleize %></th><td><%= h val %></td></tr>
 		<% end %>
 		<% if track.website %>
-			<tr><th>Website</th><td><a target="_new" href="<%= track.website %>"><%= track.website %></a></td></tr>
+			<tr><th>Website</th><td><a target="_new" href="<%= track.website %>"><%= h track.website %></a></td></tr>
+		<% end %>
+		<% if track.wikipedia_url %>
+			<tr><th>Wikipedia</th><td><a target="_new" href="<%= track.wikipedia_url %>"><%= h track.wikipedia_url %></a></td></tr>
 		<% end %>
 		<% if track.categories.size > 0 %>
 			<tr><th>Used For</th><td><%= track.categories.map(&:name).join(", ") %></td></tr>

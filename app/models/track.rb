@@ -11,8 +11,10 @@ class Track < ActiveRecord::Base
   validates_presence_of :state, :message => 'is required for tracks in the USA', :if => Proc.new { |track| track.country_code == 'usa' }
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
   validates_format_of :website, :message => 'must be a full URL, starting with http://', :if => Proc.new { |track| !track.website.blank? }, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
+  validates_format_of :wikipedia_url, :message => 'must be a Wikipedia link, starting with http://en.wikipedia.org/wiki/', :if => Proc.new { |track| !track.wikipedia_url.blank? }, :with => /^http:\/\/en\.wikipedia\.org\/wiki\/.+$/ix
   validates_numericality_of :lat, :greater_than => -90, :less_than => 90
   validates_numericality_of :lng, :greater_than => -180, :less_than => 180
+  validates_numericality_of :turns, :allow_nil => true, :only_integer => true, :greater_than => 0, :less_than => 1_000
   validates_numericality_of :capacity, :allow_nil => true, :only_integer => true, :greater_than => 0, :less_than => 1_000_000
   validates_numericality_of :year_built, :allow_nil => true, :only_integer => true, :greater_than => 1900, :less_than => 2020
   validates_numericality_of :length_in_km, :allow_nil => true, :greater_than => 0, :less_than => 50
