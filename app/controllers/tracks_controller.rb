@@ -16,6 +16,10 @@ class TracksController < ApplicationController
   end
   
   def create
+    if !params[:track][:lat].blank? and params[:track][:lat] =~ /&ll=([\.\-\d]+),([\.\-\d]+)/
+      params[:track][:lat] = $1
+      params[:track][:lng] = $2
+    end
     @track = Track.new(params[:track])
     # Update length if the user inputed in miles
     @track.length_in_km = @track.length_in_km * 1.6 if params[:uom] == 'mi'
