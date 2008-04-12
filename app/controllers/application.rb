@@ -2,6 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
+  session :off
   ActiveScaffold.set_defaults do |config| 
     config.ignore_columns.add [:created_at, :updated_at, :lock_version, :version, :password_hash, :versions, :track_blob]
   end
@@ -10,7 +11,7 @@ class ApplicationController < ActionController::Base
 
   # See ActionController::RequestForgeryProtection for details
   # Uncomment the :secret if you're not using the cookie session store
-  protect_from_forgery # :secret => 'd52155a1a4e6d990522ea5b57c6ebb5e'
+  #protect_from_forgery # :secret => 'd52155a1a4e6d990522ea5b57c6ebb5e'
   
   before_filter :load_user
   

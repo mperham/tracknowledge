@@ -49,7 +49,7 @@ a:link, a:visited {color: #001999; text-decoration: underline;}
 a:hover {color: #001999; text-decoration: none;}
 a:active {color: #343434; text-decoration: none;}
 
-table {width: 100%; empty-cells: show; margin-bottom: 18px;}
+table {empty-cells: show; margin-bottom: 18px;}
 th, td {padding: 4px 9px; vertical-align: middle;}
 img {background: transparent; border: 0;}
 
@@ -67,10 +67,8 @@ body {
 }
 
 h1, h2, h3, h4 {
-	color: #CFCBBC;
-	background-color: #232527;
+	color: #232527;
 	margin: 0;
-	-moz-border-radius: 10px; -webkit-border-radius: 10px;
 	padding: 10px 10px;
 	margin-bottom: 10px;
 }

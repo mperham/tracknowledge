@@ -1,21 +1,4 @@
-<div id='home_graphic'
-	<img src='/images/home.jpg' style="margin-bottom: 20px;"/>
-
-	<div id="about_us" class="info_bubble">
-		<h2>About Us</h2>
-		<p>
-			Welcome to tracknowledge.org, where you can find all<br/>
-			things related to motorsports and race tracks!
-		</p>
-		<ul>
-			<li><%= link_to 'Find your favorite track in our database', '/searches/new' %></li>
-			<li><%= link_to 'Chat with fellow enthusiasts in our forums', '/forums' %></li>
-			<li><%= link_to 'Shop for your favorite fan in our store', '/products' %></li>
-			<li><%= link_to 'Submit information about a Track in your area', '/tracks/new' %></li>
-		</ul>
-	</div>
-</div>
-<div id="text">
-	<%= render :partial => 'home_tracks' %>
-	<%= render :partial => 'top_submitters' %>
-</div>
+<%= image_tag 'trackbanner.jpg' %>
+<%= render :partial => 'home_tracks' %>
+<%= render :partial => 'top_submitters' %>
+<%= render :partial => 'about' %>

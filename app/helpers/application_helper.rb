@@ -21,4 +21,10 @@ module ApplicationHelper
 	def row_style(index)
 	  "class='#{index % 2 == 0 ? 'even' : 'odd'}'"
   end
+  
+  def track_count
+    Track.cache do
+      Track.count
+    end
+  end
 end
