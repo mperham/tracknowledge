@@ -16,7 +16,7 @@
 	<h3>Required</h3>
 <table>
 	<tr><th>Name</th><td><%= f.text_field :name, :maxlength => 64 %></td></tr>
-	<tr><th>Latitude<sup>1</sup></th><td><%= f.text_field :lat, :size => 12, :maxlength => 128 %> (example: 34.56789)</td></tr>
+	<tr><th>Latitude<sup>1</sup></th><td><%= f.text_field :lat, :size => 12, :maxlength => 200 %> (example: 34.56789)</td></tr>
 	<tr><th>Longitude</th><td><%= f.text_field :lng, :maxlength => 12 %> (example: -110.12345)</td></tr>
 	<tr><th>Country</th><td><%= select(:track, :country_code, new_country_options) %></td></tr>
 	<tr><th>Your Email<sup>2</sup></th><td><%= f.text_field :user_email, :size => 64, :maxlength => 128 %></td></tr>
