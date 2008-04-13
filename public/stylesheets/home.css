@@ -63,7 +63,7 @@ table select, table input, table textarea {margin: 3px 0;}
 body {
 	font-size: 1.1em;
 	font-family: Helvetica, Sans-Serif;
-	background-color: #EFFDFF;
+	background-color: #FFFFFF;
 }
 
 h1, h2, h3, h4 {
@@ -159,7 +159,7 @@ tr.odd td {
 	letter-spacing: 5px;
 }
 #banner a {
-	color: #270000;
+	color: #900000;
 	text-decoration: none;
 }
 #banner a:hover {
