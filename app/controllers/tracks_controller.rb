@@ -26,6 +26,7 @@ class TracksController < ApplicationController
     @track.status = (@track.user_email =~ /@tracknowledge.org/ ? 1 : 0)
 
     if @track.save
+      notify_admin @track
       flash[:notice] = 'Your track entry has been submitted.  NOTE: It will not be visible until it has verified by our editors. Thank you!'
       redirect_to root_path
     else
@@ -42,6 +43,15 @@ class TracksController < ApplicationController
   end
   
   private
+  
+  def notify_admin(track)
+    begin
+      TrackMailer.deliver_summary(track)
+    rescue => e
+      puts e.message
+      puts e.backtrace.join("\n")
+    end
+  end
   
   def map_for(track)
   	map = GMap.new("map_div_id")
