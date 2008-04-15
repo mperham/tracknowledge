@@ -29,6 +29,10 @@ class Track < ActiveRecord::Base
     details.notes
   end
   
+  def notes=(text)
+    details.notes = text
+  end
+  
   def approved?
     status == 1
   end
@@ -42,12 +46,13 @@ class Track < ActiveRecord::Base
     @tags ||= details.tags.split(' ')
   end
   
+  def tags=(text)
+    details.tags = text
+    @tags = nil
+  end
+  
   def details
-    unless self.track_blob
-      self.track_blob = TrackBlob.create!(:tags => '', :notes => '')
-      self.save!
-    end
-    self.track_blob
+    self.track_blob ||= TrackBlob.new(:tags => '', :notes => '')
   end
   
   def to_param
@@ -57,7 +62,7 @@ class Track < ActiveRecord::Base
   private
   
   def add_empty_blob
-    self.track_blob = TrackBlob.create!(:tags => '', :notes => '')
+    self.track_blob ||= TrackBlob.create!(:tags => '', :notes => '')
   end
   
   def country_lookup(code)
