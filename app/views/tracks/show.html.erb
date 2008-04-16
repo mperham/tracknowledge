@@ -1,6 +1,7 @@
 <h1><%= h @track.name %></h1>
 <div>
 	<div id="track_data" style="float: left">
+		<h2>Basic Information</h2>
 		<table>
 		<% %w(address owner country turns capacity designer length_in_km year_built added_by).each do |prop| 
 			val = @track.send(prop.to_sym)
@@ -17,7 +18,7 @@
 		 <tr><th>Types</th><td><%= @track.categories.map(&:name).join(", ") %></td></tr>
 		</table>
 	</div>
-	<div id="track_description" style="float: right; width: 50%;">
+	<!--div id="track_description" style="float: right; width: 50%;">
 		<strong>Description</strong>
 		<p>
 			<% unless @track.notes.blank? %>
@@ -26,6 +27,15 @@
 				<em>No description available for this track.</em>
 			<% end %>
 		</p>
+	</div-->
+	<div id="track_video" style="float: right;">
+		<h2>Youtube Video</h2>
+		<%
+			search = Youtube::Video.find(:first, :params => {:vq => @track.name, :"max-results" => '5'})
+		  search.entry.each do |entry|
+				thumb = entry.group.thumbnail.first %>
+				<%= link_to image_tag(thumb.url, :width => thumb.width, :height => thumb.height, :style => 'margin-left: 10px;', :title => entry.title), entry.group.player.url %>
+ 	  <% end %>
 	</div>
 </div>
 <div style="width: 800px; clear: both; padding-top: 30px;">
