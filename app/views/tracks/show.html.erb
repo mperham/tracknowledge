@@ -28,14 +28,19 @@
 			<% end %>
 		</p>
 	</div-->
-	<div id="track_video" style="float: right;">
+	<div id="track_video" style=" float: right; width: 700px;">
 		<h2>Youtube Video</h2>
+		<ul style="list-style-type: none; padding: 0; margin: 0;">
 		<%
 			search = Youtube::Video.find(:first, :params => {:vq => @track.name, :"max-results" => '5'})
 		  search.entry.each do |entry|
 				thumb = entry.group.thumbnail.first %>
-				<%= link_to image_tag(thumb.url, :width => thumb.width, :height => thumb.height, :style => 'margin-left: 10px;', :title => entry.title), entry.group.player.url %>
+				<li style="display: inline; float: right; width: <%= Integer(thumb.width) + 10 %>px">
+				<%= link_to image_tag(thumb.url, :width => thumb.width, :height => thumb.height, :style => 'padding: 5px 5px;', :title => entry.title), entry.group.player.url, :target => '_new' %>
+				<p style="font-size: 0.7em;"><%= entry.title %></p>
+				</li>
  	  <% end %>
+		</ul>
 	</div>
 </div>
 <div style="width: 800px; clear: both; padding-top: 30px;">
