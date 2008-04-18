@@ -14,7 +14,9 @@
 		<% if @track.website %>
 		 <tr><th>Website</th><td><%= link_to h(@track.website), @track.website, {:target => '_new'} %></td></tr>
 		<% end %>
+		<% unless @track.tags.blank? %>
 		 <tr><th>Tags</th><td><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></td></tr>
+		<% end %>
 		 <tr><th>Types</th><td><%= @track.categories.map(&:name).join(", ") %></td></tr>
 		</table>
 	</div>
