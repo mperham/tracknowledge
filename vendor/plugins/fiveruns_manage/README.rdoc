@@ -1,0 +1,137 @@
+= fiveruns-manage 0.9.9
+
+Product: http://fiveruns.com/products/manage
+
+Source Repository: http://github.com/fiveruns/fiveruns-manage
+Gem Repository: http://rubyforge.org/projects/fiveruns
+RDoc: http://fiveruns.rubyforge.org/fiveruns-manage
+
+== Summary
+
+Instrumentation plugin used to report metrics to the
+FiveRuns Manage service, http://fiveruns.com/products/manage
+
+== Installation
+
+To generate the plugin stub in your application:
+
+  [~/] $ sudo gem install fiveruns-manage --source http://gems.fiveruns.com
+  [~/] $ cd /path/to/your_app
+  [your_app/] $ ruby script/generate fiveruns_manage
+  
+By default, you need the fiveruns-manage gem installed on any server you plan on instrumenting.
+If you'd like to freeze the current gem into your source tree at vendor/fiveruns-manage (so production
+machines don't need the gem), use the fiveruns:manage:freeze:gem command:
+
+  [your_app/] $ rake fiveruns:manage:freeze:gem
+  [your_app/] $ # ... and add vendor/fiveruns-manage to your source control  
+
+You can also unfreeze the gem (rely on the system gem again):
+
+  [your_app/] $ # ... remove vendor/fiveruns from your source control, and/or:
+  [your_app/] $ rake fiveruns:manage:unfreeze:gem
+
+We recommend the system gems possibility whenever possible due to ease of updates, but
+please use whatever method works best for your development and deployment workflow.
+
+== Updates
+
+Get an updated copy of the gem:
+
+  [~/] $ sudo gem update fiveruns-manage --source http://gems.fiveruns.com
+  
+If you're using vendor/fiveruns-manage, refreeze:
+
+  [your_app/] $ rake fiveruns:manage:freeze:gem
+  [your_app/] $ # ... if necessary, change/add vendor/fiveruns-manage to your source control
+
+And restart your server.  If you see a message about your plugin stub needing to be updated,
+simply regenerate it as in the original installation:
+
+  [your_app] $ ruby script/generate fiveruns_manage
+  
+Restart your server and verify it is instrumenting your application.
+
+== Configuration
+
+You can define the behavior of the plugin by creating
+a configuration file at +RAILS_ROOT/config/fiveruns_manage.rb+
+
+An example illustrating the defaults:
+
+  Fiveruns::Manage::Plugin.configure do |config|
+  
+    # Environments the plugin will instrument
+    config.environments = %w(production development test)
+  
+    # Environments in which the plugin will report metrics
+    # Note: A subset of +environments+
+    config.report_environments = %w(production development)
+  
+    # Directory to place the report file (.yml)
+    config.report_directory = File.join(RAILS_ROOT, 'log')
+    
+    # Interval between report updates, in seconds
+    # Note: Must be between 10 and 300
+    config.report_interval = 20
+    
+  end
+  
+== Advanced Settings
+
+=== Instrumented Scripts
+  
+By default, the plugin will only attempt to load if you are using one of the following scripts:
+  * script/server
+  * script/console (irb)
+  * mongrel_rails
+  
+If you would like to modify the list of instrumented scripts, change the ALLOW_FIVERUNS_MANAGE_SCRIPTS array
+in your environment.rb (before the plugin loads), ie:
+  ALLOW_FIVERUNS_MANAGE_SCRIPTS = %w(server irb mongrel_rails runner)
+  
+It's not recommended that you enable 'rake' as one of the instrumented scripts; if you would like instrumentation
+running from rake (eg, for testing), you can set the LOAD_FIVERUNS_MANAGE environment variable in the specific task
+(or in your test helper before the Rails environment is loaded).
+
+  ENV['LOAD_FIVERUNS_MANAGE'] = 'okay!!'
+
+=== Force Gem
+
+If you are using a frozen vendor/fiveruns-manage copy, please note you can force the gem version to load instead
+by setting the LOAD_FIVERUNS_MANAGE environment variable to 'gem'
+  
+== Support & Participation
+
+If you're a customer using the FiveRuns Manage product and have
+any questions or concerns, please contact support@fiveruns.com.
+
+The FiveRuns development team welcomes your collaboration through
+our GitHub repository, http://github.com/fiveruns/fiveruns-manage.
+Feel free to fork, modify and use the plugin as you wish, and 
+remember to send pull requests in bulk. :-)
+
+== License
+
+# (The FiveRuns License)
+#
+# Copyright (c) 2006-2008 FiveRuns Corporation
+# 
+# Permission is hereby granted, free of charge, to any person obtaining
+# a copy of this software and associated documentation files (the
+# 'Software'), to deal in the Software without restriction, including
+# without limitation the rights to use, copy, modify, merge, publish,
+# distribute, sublicense, and/or sell copies of the Software, and to
+# permit persons to whom the Software is furnished to do so, subject to
+# the following conditions:
+# 
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+# IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+# CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+# TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+# SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
