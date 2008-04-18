@@ -9,7 +9,7 @@
 		 <tr><th><%= prop.titleize %></th><td><%= h val %></td></tr>
 		<% end %>
 		<% if @track.wikipedia_url %>
-			<tr><th>Wikipedia</th><td><%= link_to h(@track.wikipedia_url.gsub /http:\/\/en\.wikipedia\.org\/wiki\//, ''), @track.wikipedia_url, {:target => '_new'} %></a></td></tr>
+			<tr><th>Wikipedia</th><td><%= link_to h(@track.wikipedia_url.gsub(/http:\/\/en\.wikipedia\.org\/wiki\//, '')), @track.wikipedia_url, {:target => '_new'} %></a></td></tr>
 		<% end %>
 		<% if @track.website %>
 		 <tr><th>Website</th><td><%= link_to h(@track.website), @track.website, {:target => '_new'} %></td></tr>
