@@ -61,7 +61,7 @@ table select, table input, table textarea {margin: 3px 0;}
 /* @end */
 
 body {
-	font-size: 1.1em;
+	font-size: 1.0em;
 	font-family: Helvetica, Sans-Serif;
 	background-color: #FFFFFF;
 }
@@ -74,15 +74,15 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-	font-size: 1.6em;
+	font-size: 1.5em;
 }
 
 h2 {
-	font-size: 1.4em;
+	font-size: 1.3em;
 }
 
 h3 {
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 img {
@@ -115,10 +115,6 @@ tr.odd td {
 	font-size: 0.8em;
 	margin-top: 30px;
 	text-align: center;
-}
-
-#header {
-	margin-bottom: 20px;
 }
 
 #content {
@@ -154,14 +150,11 @@ tr.odd td {
 }
 
 #banner {
-	font-size: 200%;
-	font-family: georgia, verdana;
-	letter-spacing: 5px;
+	margin-top: 5px;
+	font-size: 220%;
+	letter-spacing: 0.2em;
 }
 #banner a {
-	color: #900000;
+	color: #A00000;
 	text-decoration: none;
-}
-#banner a:hover {
-	text-decoration: underline;
 }

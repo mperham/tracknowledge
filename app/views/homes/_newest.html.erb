@@ -1,0 +1,9 @@
+<div id="latest_tracks" class="info_bubble">
+	<h2>Latest Tracks</h2>
+	<table>
+		<tr><th>Name</th><th>Location</th><th>Type</th></tr>
+		<% @latest.each_with_index do |track, index| %>
+		<tr <%= row_style(index) %>><td><%= link_to track.name, track_path(track) %></td><td><%= location_of track %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
+		<% end %>
+	</table>
+</div>

@@ -1,9 +1,12 @@
 <div id="header">
-	<span id="banner" style="float: left;">
+	<span id="banner" style="float: left; width: 50%;">
 		<%= link_to('TracKnowledge', root_path) %>
 	</span>
-	<span id="session-status" style="float: right;">
-		Search: <% form_tag('/search', :method => :get, :style => 'display: inline;') do %><%= text_field_tag :name, params[:name], { :size => 15, :maxlength => 50 } %><%= submit_tag 'Go!' %><% end %>
+	<span id="session-status" style="float: right; width: 50%">
+		Search: 
+			<% form_tag('/search', :method => :get, :style => 'display: inline;') do -%>
+				<%= text_field_tag :name, params[:name], { :size => 10, :maxlength => 50 } %><%= submit_tag 'Go!' %>
+			<% end -%>
 		| <%= link_to 'Random!', random_tracks_path %>
 		| <%= link_to 'Store', '/products' %>
 		| <%= link_to 'Forums', '/forums' %>

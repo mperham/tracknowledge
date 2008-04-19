@@ -1,3 +1,5 @@
+require 'state_helper'
+
 class Track < ActiveRecord::Base
   acts_as_mappable
   acts_as_versioned
@@ -23,6 +25,10 @@ class Track < ActiveRecord::Base
   
   def country
     country_lookup(self.country_code)
+  end
+  
+  def state_name
+    self.state.blank? ? nil : state_lookup(self.state)
   end
   
   def notes
@@ -67,5 +73,9 @@ class Track < ActiveRecord::Base
   
   def country_lookup(code)
     code == 'usa' ? 'USA' : CountryCodes.find_by_a3(code)[:name]
+  end
+
+  def state_lookup(code)
+    STATE_LOOKUP[code]
   end
 end
