@@ -1,0 +1,6 @@
+<li style="display: inline; float: right; width: 140px">
+<%= img = image_tag(picture.url(:thumbnail), :style => 'padding: 5px 5px; width: 100px;', :title => picture.title)
+    url = picture.url(:photopage)
+		link_to(img, url, :target => '_new') %>
+<p style="font-size: 0.7em;"><%= picture.title %></p>
+</li>

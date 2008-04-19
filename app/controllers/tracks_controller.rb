@@ -1,6 +1,9 @@
 class TracksController < ApplicationController
   caches_page :show
   caches_page :new
+  
+  FLICKR = Flickr.new("#{ENV['HOME']}/.flickr.yml")
+  
 
   def new
     @track = Track.new
@@ -40,9 +43,26 @@ class TracksController < ApplicationController
   def show
     @track = Track.find(params[:id], :include => [:track_blob, :categories])
     @map = map_for @track
+    @videos = find_video_for @track
+    @pictures = find_photos_for @track
   end
   
   private
+  
+  def find_video_for(track)
+    search = Youtube::Video.find(:first, :params => {:vq => @track.name, :"max-results" => '5'})
+    (search ? search.entry : [])
+  end
+  
+  def find_photos_for(track)
+#    lat, lng = track.lat, track.lng
+    pics = FLICKR.photos.search(:text => CGI::escape(track.name), :per_page => 10, :min_upload_date => 1.year.ago.to_i)
+    # Flickr's bounding box does not seem to work
+#                                :bbox => "#{lng-0.1},#{lat+0.1},#{lng+0.1},#{lat+0.1}")
+
+    # Flickr's results can return pics without thumbnails or original URLs.  Need to prune these.
+    pics.delete_if { |pic| !pic.url(:thumbnail) || !pic.url(:photopage) }[0..4]
+  end
   
   def notify_admin(track)
     begin
