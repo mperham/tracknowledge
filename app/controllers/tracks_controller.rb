@@ -14,7 +14,7 @@ class TracksController < ApplicationController
   def random
     rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
     @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{rand},1").first
-    @map = map_for @track
+    prepare_to_show @track
     render :action => 'show'
   end
   
@@ -42,12 +42,16 @@ class TracksController < ApplicationController
   
   def show
     @track = Track.find(params[:id], :include => [:track_blob, :categories])
+    prepare_to_show @track
+  end
+  
+  private
+
+  def prepare_to_show(track)
     @map = map_for @track
     @videos = find_video_for @track
     @pictures = find_photos_for @track
   end
-  
-  private
   
   def find_video_for(track)
     search = Youtube::Video.find(:first, :params => {:vq => @track.name, :"max-results" => '5'})
