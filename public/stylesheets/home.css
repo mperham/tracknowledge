@@ -1,11 +1,3 @@
-/*
- Colors:
-	#131517
-	#60616B
-	#CFCBBC
-	#EFFDFF
-	#838EA9
-	*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, tt, var, b, u, i, center, dl, dt, dd, fieldset, form, label, legend, button, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-size: 100%; vertical-align: baseline; background: transparent;}
 
 body {line-height: 1;}
@@ -22,7 +14,7 @@ table {border: 1px solid #cccdcd; border-left: 0; border-bottom: 0; border-colla
 /* @end */
 
 /* @group Defaults */
-body {font-family: Verdana, Arial, sans-serif; font-size: 12px; padding: 10px;}
+body {font-family: Helvetica, Verdana, Arial, sans-serif; font-size: 14px; padding: 10px;}
 h1, h2, h3, h4, h5, h6, p, img, ul, ol, li, dl, dt, dd, blockquote, pre, code, div, table, tr, th, td, tbody, tfoot, fieldset, legend, input, textarea, select, button {line-height: 18px;}
 
 h1, h2, h3, h4, h5, h6, dt, legend {background: transparent; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;}
@@ -53,18 +45,11 @@ table {empty-cells: show; margin-bottom: 18px;}
 th, td {padding: 4px 9px; vertical-align: middle;}
 img {background: transparent; border: 0;}
 
-label, .bold {color: #535353; line-height: 18px;}
-input, select, textarea {line-height: 18px; margin: 0; margin-bottom: 18px;background-color:#CFCBBC; margin-right: 5px;}
+input, select, textarea {line-height: 18px; margin: 0; margin-bottom: 18px;background-color:#ddd; margin-right: 5px;}
 input, textarea {border: 1px solid #999; }
 button {background: none; cursor: pointer; margin-right: 9px; overflow: visible; vertical-align: middle; width: auto;}
 table select, table input, table textarea {margin: 3px 0;}
 /* @end */
-
-body {
-	font-size: 1.0em;
-	font-family: Helvetica, Sans-Serif;
-	background-color: #FFFFFF;
-}
 
 h1, h2, h3, h4 {
 	color: #232527;
@@ -85,10 +70,6 @@ h3 {
 	font-size: 1.1em;
 }
 
-img {
-	border: none;
-}
-
 /*table {
   border-top:1px solid #e5eff8;
   border-right:1px solid #e5eff8;
@@ -102,12 +83,12 @@ td {
 }
 
 th {
-	background-color: #60616B;
-	color: #CFCBBC;
+	background-color: #606190;
+	color: #ddd;
 }
 
 tr.odd td {
-  background:#CFCBBC
+  background:#ddd;
 }
 
 #footer {
@@ -155,6 +136,6 @@ tr.odd td {
 	letter-spacing: 0.2em;
 }
 #banner a {
-	color: #A00000;
+	color: #606190;
 	text-decoration: none;
 }

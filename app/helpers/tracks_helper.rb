@@ -1,6 +1,6 @@
 module TracksHelper
   def new_state_options
-    SearchHelper::STATE_OPTIONS
+    STATE_OPTIONS
   end
   
   def new_country_options
