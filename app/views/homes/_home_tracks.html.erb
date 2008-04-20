@@ -8,7 +8,7 @@
 			<% end %>
 		</table>
 	<% else %>
-		Uh oh, we couldn't find your location based on your IP address '<%= request.remote_ip %>'.  Sorry!
+		<p>Uh oh, we couldn't find your location based on your IP address '<%= request.remote_ip %>'.  Sorry!</p>
 	<% end %>
 	<%= link_to 'View All Tracks...', search_path %>
 </div>

@@ -1,9 +1,9 @@
 <% form_tag('/search', :method => :get) do %>
-<div id="search_filter">
-	<label for='name'>Name</label>: <%= text_field_tag :name, params[:name], { :maxlength => 30 } %><br/>
-	<label for='state'>State</label>: <%= select_tag(:state, options_for_select(state_options, params[:state]))  %><br/>
-	<label for='country'>Country</label>: <%= select_tag(:country_code, options_for_select(country_options, params[:country_code]))  %><br/>
-	<label for='type'>Type</label>: <%= select_tag(:category, options_for_select(category_options, params[:category])) %><br/>
-	<%= submit_tag 'Search' %>
-</div>
+<table id="search_filter">
+	<tr><td><label for='country'>Country</label></td><td><%= select_tag(:country_code, options_for_select(country_options, params[:country_code]))  %></td>
+	<td><label for='state'>State</label></td><td><%= select_tag(:state, options_for_select(state_options, params[:state]))  %></td></tr>
+	<tr><td><label for='name'>Name</label></td><td><%= text_field_tag :name, params[:name], { :maxlength => 30 } %></td>
+	<td><label for='type'>Type</label></td><td><%= select_tag(:category, options_for_select(category_options, params[:category])) %></td></tr>
+</table>
+<%= submit_tag 'Search' %>
 <% end %>
