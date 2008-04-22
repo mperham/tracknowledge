@@ -39,7 +39,7 @@
 <table>
 	<tr><th>State</th><td><%= select(:track, :state, new_state_options)  %></td></tr>
 	<tr><th>Website URL</th><td><%= f.text_field :website, :size => 64, :maxlength => 128 %></td></tr>
-	<tr><th>Wikipedia Link<sup>3</sup></th><td><%= f.text_field :wikipedia_url, :size => 64, :maxlength => 128 %></td></tr>
+	<tr><th>Wikipedia URL<sup>3</sup></th><td><%= f.text_field :wikipedia_url, :size => 64, :maxlength => 128 %></td></tr>
 	<tr><th>Seating Capacity</th><td><%= f.text_field :capacity, :maxlength => 6 %></td></tr>
 	<tr><th>Turns</th><td><%= f.text_field :turns, :maxlength => 4 %></td></tr>
 	<tr><th>Year Built</th><td><%= f.text_field :year_built, :maxlength => 4 %></td></tr>

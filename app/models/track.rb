@@ -3,6 +3,7 @@ require 'state_helper'
 class Track < ActiveRecord::Base
   acts_as_mappable
   acts_as_versioned
+  xss_terminate
   
   # This blob should never be accessed directly.  Use #details instead
   # which will dynamically create the blob if necessary.
