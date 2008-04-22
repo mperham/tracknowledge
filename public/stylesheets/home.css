@@ -46,9 +46,8 @@ th, td {padding: 4px 9px; vertical-align: middle;}
 img {background: transparent; border: 0;}
 
 input, select, textarea {line-height: 18px; margin: 0; background-color:#ddd; margin-right: 5px;}
-input, textarea {border: 1px solid #999; }
-button {background: none; cursor: pointer; margin-right: 9px; overflow: visible; vertical-align: middle; width: auto;}
 table select, table input, table textarea {margin: 3px 0;}
+input, select, textarea {border: 1px solid #999; }
 /* @end */
 
 h1, h2, h3, h4 {
@@ -139,4 +138,8 @@ tr.odd td {
 #banner a {
 	color: #606190;
 	text-decoration: none;
+}
+
+h2 img {
+	vertical-align: baseline;
 }

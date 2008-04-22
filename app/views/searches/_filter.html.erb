@@ -1,4 +1,4 @@
-<% form_tag('/search', :method => :get) do %>
+<% form_tag('/search', :method => :get, :style => 'margin-bottom: 10px;') do %>
 <table id="search_filter">
 	<tr><td><label for='country'>Country</label></td><td><%= select_tag(:country_code, options_for_select(country_options, params[:country_code]))  %></td>
 	<td><label for='state'>State</label></td><td><%= select_tag(:state, options_for_select(state_options, params[:state]))  %></td></tr>
