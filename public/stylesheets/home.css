@@ -45,7 +45,7 @@ table {empty-cells: show; margin-bottom: 18px;}
 th, td {padding: 4px 9px; vertical-align: middle;}
 img {background: transparent; border: 0;}
 
-input, select, textarea {line-height: 18px; margin: 0; margin-bottom: 18px;background-color:#ddd; margin-right: 5px;}
+input, select, textarea {line-height: 18px; margin: 0; background-color:#ddd; margin-right: 5px;}
 input, textarea {border: 1px solid #999; }
 button {background: none; cursor: pointer; margin-right: 9px; overflow: visible; vertical-align: middle; width: auto;}
 table select, table input, table textarea {margin: 3px 0;}
@@ -99,7 +99,7 @@ tr.odd td {
 }
 
 #content {
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .flash {
