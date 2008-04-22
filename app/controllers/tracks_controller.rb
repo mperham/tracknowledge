@@ -59,7 +59,7 @@ class TracksController < ApplicationController
   end
   
   def video_exclude
-    "-xbox -ps3 -ps2 -sim -gta -rfactor"
+    "-xbox -ps3 -ps2 -sim -gta -rfactor -simracing"
   end
   
   def find_photos_for(track)
