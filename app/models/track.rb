@@ -10,8 +10,9 @@ class Track < ActiveRecord::Base
   belongs_to :track_blob
   has_and_belongs_to_many :categories, :join_table => 'track_categories'
   
-  validates_presence_of :name, :lng, :lat, :country_code
+  validates_presence_of :name, :lng, :lat, :country_code, :user_email
   validates_presence_of :state, :message => 'is required for tracks in the USA', :if => Proc.new { |track| track.country_code == 'usa' }
+  validates_format_of :user_email, :with => /^[a-zA-Z0-9_+\.]+@([a-zA-Z0-9\-]+)(\.[a-zA-Z0-9\-]+)+$/
   validates_format_of :country_code, :with => /\A[a-z]{3}\Z/
   validates_format_of :website, :message => 'must be a full URL, starting with http://', :if => Proc.new { |track| !track.website.blank? }, :with => /^(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/ix
   validates_format_of :wikipedia_url, :message => 'must be a Wikipedia link, starting with http://en.wikipedia.org/wiki/', :if => Proc.new { |track| !track.wikipedia_url.blank? }, :with => /^http:\/\/en\.wikipedia\.org\/wiki\/.+$/ix
