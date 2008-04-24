@@ -60,7 +60,7 @@ class TracksController < ApplicationController
     search = nil
     begin
       search = Youtube::Video.find(:first, :params => {:vq => "#{@track.name} #{video_exclude}", :"max-results" => '5'})
-      (search && search.totalResults > 0 ? search.entry : [])
+      (search && search.totalResults > 0 ? search.entry : 'No videos found')
     rescue => e
       puts "Youtube problem: #{e.message} #{search.inspect}"
       'Sorry, the Youtube video search API is currently unavailable.'
@@ -76,6 +76,7 @@ class TracksController < ApplicationController
       pics = FLICKR.photos.search(:text => CGI::escape(track.name), :per_page => 10, :min_upload_date => 1.year.ago.to_i)
       # Flickr's results can return pics without thumbnails or original URLs.  Need to prune these.
       pics.delete_if { |pic| !pic.url(:thumbnail) || !pic.url(:photopage) }[0..4]
+      pics.size == 0 ? 'No pictures found' : pics
     rescue => e
       e.message
     end
