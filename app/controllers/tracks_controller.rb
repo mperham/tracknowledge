@@ -14,8 +14,11 @@ class TracksController < ApplicationController
   def random
     rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
     @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{rand},1").first
-    prepare_to_show @track
-    render :action => 'show'
+    redirect_to track_url(@track)
+  end
+  
+  def explode
+    raise 'boom'
   end
   
   def create
@@ -63,9 +66,13 @@ class TracksController < ApplicationController
   end
   
   def find_photos_for(track)
-    pics = FLICKR.photos.search(:text => CGI::escape(track.name), :per_page => 10, :min_upload_date => 1.year.ago.to_i)
-    # Flickr's results can return pics without thumbnails or original URLs.  Need to prune these.
-    pics.delete_if { |pic| !pic.url(:thumbnail) || !pic.url(:photopage) }[0..4]
+    begin
+      pics = FLICKR.photos.search(:text => CGI::escape(track.name), :per_page => 10, :min_upload_date => 1.year.ago.to_i)
+      # Flickr's results can return pics without thumbnails or original URLs.  Need to prune these.
+      pics.delete_if { |pic| !pic.url(:thumbnail) || !pic.url(:photopage) }[0..4]
+    rescue => e
+      e.message
+    end
   end
   
   def notify_admin(track)

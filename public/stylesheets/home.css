@@ -143,3 +143,5 @@ tr.odd td {
 h2 img {
 	vertical-align: baseline;
 }
+
+th a:link, th a:visited, th a:hover {color: #fff;}

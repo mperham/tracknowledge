@@ -39,9 +39,13 @@
 	</div>
 	<div id="track_pictures" style=" float: right; width: 700px;">
 		<h2><%= link_to(image_tag('flickr.png', :height => '30', :width => '105', :title => 'Flickr', :style => 'margin-bottom: -1px;'), 'http://www.flickr.com', :target => '_new') %> Photos</h2>
-		<ul style="list-style-type: none; padding: 0; margin: 0;">
-		<%= render :partial => 'picture', :collection => @pictures %>
-		</ul>
+		<% if @pictures.is_a? String # Flickr API not available %>
+			<p><%= @pictures %></p>
+		<% else %>
+			<ul style="list-style-type: none; padding: 0; margin: 0;">
+			<%= render :partial => 'picture', :collection => @pictures %>
+			</ul>
+		<% end %>
 	</div>
 </div>
 <div style="width: 800px; clear: both;">

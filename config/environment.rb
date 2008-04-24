@@ -60,6 +60,8 @@ Rails::Initializer.run do |config|
   config.active_record.default_timezone = :utc
 end
 
+ExceptionNotifier.exception_recipients = %w(mike@tracknowledge.org)
+
 # These defaults are used in GeoKit::Mappable.distance_to and in acts_as_mappable
 GeoKit::default_units = :miles
 GeoKit::default_formula = :sphere

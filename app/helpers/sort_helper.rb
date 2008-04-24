@@ -128,7 +128,7 @@ module SortHelper
     text = Inflector::titleize(column) unless text
     params = {:params => {:sort_key => column, :sort_order => order } }
     params = params.merge(options[:params]) if options[:params]
-    link_to(text, params) +
+    link_to(text, params, { :rel => 'nofollow' }) +
       (icon ? nbsp(2) + image_tag(File.join(@icons_dir,icon)) : '')
   end
 
