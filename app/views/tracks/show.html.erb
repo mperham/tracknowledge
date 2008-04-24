@@ -33,9 +33,13 @@
 	</div-->
 	<div id="track_video" style=" float: right; width: 700px;">
 		<h2><%= link_to(image_tag('youtube.png', :height => '30', :width => '80', :title => 'Youtube', :style => 'margin-bottom: -5px;'), 'http://www.youtube.com', :target => '_new') %> Video</h2>
-		<ul style="list-style-type: none; padding: 0; margin: 0;">
-		<%= render :partial => 'video', :collection => @videos %>
-		</ul>
+		<% if @videos.is_a? String # Youtube API not available %>
+			<p><%= @videos %></p>
+		<% else %>
+			<ul style="list-style-type: none; padding: 0; margin: 0;">
+			<%= render :partial => 'video', :collection => @videos %>
+			</ul>
+		<% end %>
 	</div>
 	<div id="track_pictures" style=" float: right; width: 700px;">
 		<h2><%= link_to(image_tag('flickr.png', :height => '30', :width => '105', :title => 'Flickr', :style => 'margin-bottom: -1px;'), 'http://www.flickr.com', :target => '_new') %> Photos</h2>
