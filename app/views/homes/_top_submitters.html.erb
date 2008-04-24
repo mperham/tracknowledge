@@ -4,7 +4,7 @@
 		Thanks to all members who have contributed track data!
 	</p>
 	<table>
-		<tr><th>Name</th><th>#</th></tr>
+		<tr><th style="min-width: 200px;">Name</th><th>#</th></tr>
 		<% @submitters.each_with_index do |(name, count), index| %>
 		<tr <%= row_style(index) %>><td><%= h name %></td><td><%= count %></td></tr>
 		<% end %>
