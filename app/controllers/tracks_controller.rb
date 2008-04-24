@@ -60,7 +60,7 @@ class TracksController < ApplicationController
     search = nil
     begin
       search = Youtube::Video.find(:first, :params => {:vq => "#{@track.name} #{video_exclude}", :"max-results" => '5'})
-      (search && search.totalResults > 0 ? search.entry : 'No videos found')
+      (search && Integer(search.totalResults) > 0 ? search.entry : 'No videos found')
     rescue => e
       puts "Youtube problem: #{e.message} #{search.inspect}"
       'Sorry, the Youtube video search API is currently unavailable.'
