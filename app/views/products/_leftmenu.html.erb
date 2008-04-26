@@ -1,4 +1,4 @@
-<h3>Store</h3>
+<h2>Store</h2>
 <ul>
 	<% ProductsHelper::CATEGORY_NAME_TO_KEY.keys.sort.each do |name| %>
 		<li><%= link_to name, { :category => ProductsHelper::CATEGORY_NAME_TO_KEY[name] } %></li>

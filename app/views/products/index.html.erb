@@ -1,11 +1,11 @@
 <% category = params[:category] || 'tracks' %>
 <div id="store">
-	<div style="float: left;" id="leftmenu">
+	<div style="float: left; width: 200px;">
 		<%= render :partial => 'leftmenu' %>
 	</div>
-	<div>
-		<h2><%= category.titleize %></h2>
-		<div>
+	<div style="float: right; width: 500px;">
+		<h2><%= ProductsHelper::CATEGORY_KEY_TO_NAME[category.to_sym] %></h2>
+		<div style="width: 100%">
 			<table>
 			<% product_listing_for category do |row| %>
 				<tr>
@@ -20,6 +20,6 @@
 </div>
 <br style="clear: both;" />
 <p>
-	Tracknowledge is a free website run by and for motorsport fans.  Everything you buy here 
-	helps pay for the website server and hosting.
+	Tracknowledge is a free website run by and for motorsport fans.
+	Everything you buy here helps pay for the website server and hosting.
 </p>
