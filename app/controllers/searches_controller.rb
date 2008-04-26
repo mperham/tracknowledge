@@ -33,5 +33,6 @@ class SearchesController < ApplicationController
     options[:conditions] = conditions.join(" AND ")
     
     @results = Track.paginate options
+    redirect_to track_url(@results.first) if @results.size == 1
   end
 end
