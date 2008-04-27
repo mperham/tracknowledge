@@ -4,13 +4,13 @@
 	<div id="track_data" style="float: left">
 		<h2>Basic Information</h2>
 		<table>
-		<% %w(address state country owner designer year_built capacity turns).each do |prop| 
+		<% %w(address state_name country owner designer year_built capacity turns).each do |prop| 
 			val = @track.send(prop.to_sym)
 			next if val.blank? %>
 		 <tr><th><%= prop.titleize %></th><td><%= h val %></td></tr>
 		<% end %>
 		<% if @track.length_in_km %>
-		 <tr><th>Length</th><td><%= @track.length_in_km %> km (<%= @track.length_in_km/1.61 %> mi)</td></tr>
+		 <tr><th>Length</th><td><%= @track.length_in_km %> km (<%= number_with_precision(@track.length_in_km/1.61, 2) %> mi)</td></tr>
 		<% end %>
 		<% if @track.wikipedia_url %>
 			<tr><th>Wikipedia</th><td><%= link_to @track.wikipedia_url.gsub(/http:\/\/en\.wikipedia\.org\/wiki\//, ''), @track.wikipedia_url, {:target => '_new'} %></a></td></tr>
