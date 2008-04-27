@@ -4,10 +4,13 @@
 	<div id="track_data" style="float: left">
 		<h2>Basic Information</h2>
 		<table>
-		<% %w(address owner country turns capacity designer length_in_km year_built added_by).each do |prop| 
+		<% %w(address state country owner designer year_built capacity turns).each do |prop| 
 			val = @track.send(prop.to_sym)
 			next if val.blank? %>
 		 <tr><th><%= prop.titleize %></th><td><%= h val %></td></tr>
+		<% end %>
+		<% if @track.length_in_km %>
+		 <tr><th>Length</th><td><%= @track.length_in_km %> km (<%= @track.length_in_km/1.61 %> mi)</td></tr>
 		<% end %>
 		<% if @track.wikipedia_url %>
 			<tr><th>Wikipedia</th><td><%= link_to @track.wikipedia_url.gsub(/http:\/\/en\.wikipedia\.org\/wiki\//, ''), @track.wikipedia_url, {:target => '_new'} %></a></td></tr>
@@ -19,6 +22,9 @@
 		 <tr><th>Tags</th><td><% @track.tags.each do |tag| %><%= link_to tag, "http://flickr.com/photos/tags/#{tag}", :target => '_new' %> <%end%></td></tr>
 		<% end %>
 		 <tr><th>Types</th><td><%= @track.categories.map(&:name).join(", ") %></td></tr>
+		<% if @track.added_by %>
+		 <tr><th>Submitted By</th><td><%= h @track.added_by %></td></tr>
+		<% end %>
 		</table>
 	</div>
 	<!--div id="track_description" style="float: right; width: 50%;">
