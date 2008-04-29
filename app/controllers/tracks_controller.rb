@@ -4,21 +4,20 @@ class TracksController < ApplicationController
   
   FLICKR = Flickr.new("#{ENV['HOME']}/.flickr.yml")
   
-
   def new
     @track = Track.new
     @track.user_email = nil
     @track.added_by = nil
   end
   
+  def index
+    redirect_to new_search_path
+  end
+  
   def random
     rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
     @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{rand},1").first
     redirect_to track_url(@track)
-  end
-  
-  def explode
-    raise 'boom'
   end
   
   def create
