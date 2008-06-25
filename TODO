@@ -1,0 +1,4 @@
+- Clean up Apache configuration
+- Enable gzip, expires headers
+- Fix flickr Undefined method error
+- FIx homepage IP lookup failure
