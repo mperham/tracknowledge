@@ -61,7 +61,7 @@ class TracksController < ApplicationController
       search = Youtube::Video.find(:first, :params => {:vq => "#{@track.name} #{video_exclude}", :"max-results" => '5'})
       (search && Integer(search.totalResults) > 0 ? search.entry : 'No videos found')
     rescue => e
-      puts "Youtube problem: #{e.message} #{search.inspect}"
+      ExceptionNotifier.deliver_exception_notification(e, self, request)
       'Sorry, the Youtube video search API is currently unavailable.'
     end
   end
@@ -77,17 +77,13 @@ class TracksController < ApplicationController
       pics.delete_if { |pic| !pic.url(:thumbnail) || !pic.url(:photopage) }[0..4]
       pics.size == 0 ? 'No pictures found' : pics
     rescue => e
-      e.message
+      ExceptionNotifier.deliver_exception_notification(e, self, request)
+      'Sorry, no photos to show.  The Flickr API is having problems...'
     end
   end
   
   def notify_admin(track)
-    begin
-      TrackMailer.deliver_summary(track)
-    rescue => e
-      puts e.message
-      puts e.backtrace.join("\n")
-    end
+    TrackMailer.deliver_summary(track)
   end
   
   def map_for(track)

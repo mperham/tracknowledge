@@ -9,10 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 12) do
+ActiveRecord::Schema.define(:version => 13) do
 
   create_table "categories", :force => true do |t|
     t.string "name", :limit => 32, :default => "", :null => false
+  end
+
+  create_table "clientperf_results", :force => true do |t|
+    t.integer  "clientperf_uri_id"
+    t.integer  "milliseconds"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "clientperf_uris", :force => true do |t|
+    t.string   "uri"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "track_blobs", :force => true do |t|

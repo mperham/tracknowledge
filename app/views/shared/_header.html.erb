@@ -1,16 +1,16 @@
 <div id="header">
 	<span id="banner" style="float: left; width: 50%;">
-		<%= link_to('TracKnowledge', root_path) %><span style="font-size: 50%; color: red; letter-spacing: 0px; vertical-align: top;">(beta!)</span>
+		<%= link_to('TracKnowledge', '/') %><span style="font-size: 50%; color: red; letter-spacing: 0px; vertical-align: top;">(beta!)</span>
 	</span>
 	<span id="session-status" style="float: right; width: 50%">
 		Search: 
 			<% form_tag('/search', :method => :get, :style => 'display: inline;') do -%>
 				<%= text_field_tag :name, params[:name], { :size => 10, :maxlength => 50 } %><%= submit_tag 'Go!' %>
 			<% end -%>
-		| <%= link_to 'Random!', random_tracks_path %>
+		| <%= link_to 'Random!', '/tracks/random' %>
 		| <%= link_to 'Store', '/products' %>
 		| <%= link_to 'Forums', '/forums' %>
-		| <%= link_to 'Submit', new_track_path %>
+		| <%= link_to 'Submit', '/tracks/new' %>
 		<% if @user -%>
 			| <%= link_to 'Logout', logout_session_path -%>
 			<% if @user.is_admin? -%>

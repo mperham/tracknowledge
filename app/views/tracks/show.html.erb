@@ -59,7 +59,7 @@
 	</div>
 </div>
 <div style="width: 800px; clear: both;">
-<h2>Map View</h2>
+<h2><%= link_to(image_tag('google.png', :height => '30', :width => '80', :title => 'Google Maps', :style => 'margin-bottom: -9px;'), 'http://maps.google.com', :target => '_new') %> Maps</h2>
 <% if @map %>
 <!-- here's the track -->
 <%= @map.to_html %>

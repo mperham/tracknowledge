@@ -1,24 +1,16 @@
-require 'rake/testtask'
+require 'rubygems'
+require 'echoe'
 
-# Note: These plugin tests require that the plugin be installed within a Rails application.
-#
-# == Dependencies
-# * test-spec
-# * sqlite3
-#
-# == Configuration
-# If you've configured the plugin in +config/fiveruns_manage.rb+, you
-# may need to add +test+ to the +environments+ configuration setting ro
-# run these tests.
+require File.dirname(__FILE__) << "/lib/fiveruns/manage/version"
 
-RAILS_ENV = ENV['RAILS_ENV'] = 'test'
-ENV['LOAD_FIVERUNS_MANAGE'] = 'yes'
-require "../../../config/environment"
-
-Rake::TestTask.new do |t|
-  t.test_files = FileList[File.join(Fiveruns::Manage::GEM_ROOT, 'test', '**', '*_test.rb')]
-  t.verbose = true
-  t.libs.unshift '../../../config'
+Echoe.new 'fiveruns_manage' do |p|
+  p.version = Fiveruns::Manage::Version::STRING
+  p.author = "FiveRuns Development Team"
+  p.email  = 'dev@fiveruns.com'
+  p.project = 'fiveruns'
+  p.summary = "Instrumentation for the FiveRuns Manage 2.0 product."
+  p.url = "http://github.com/fiveruns/fiveruns_manage"
+  p.dependencies = %w(activesupport)
+  p.include_rakefile = true
 end
 
-task :default => :test
