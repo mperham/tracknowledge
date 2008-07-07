@@ -16,15 +16,15 @@ class SearchesController < ApplicationController
       :include => []
     }
     conditions = []
-    conditions << 'status = 1' unless admin?
+    conditions << 'tracks.status = 1' unless admin?
     unless params[:name].blank?
-      conditions << "name like #{Track.connection.quote('%'+params[:name]+'%')}"
+      conditions << "tracks.name like #{Track.connection.quote('%'+params[:name]+'%')}"
     end
     unless params[:country_code].blank?
-      conditions << "country_code = #{Track.connection.quote(params[:country_code])}"
+      conditions << "tracks.country_code = #{Track.connection.quote(params[:country_code])}"
     end
     unless params[:state].blank?
-      conditions << "state = #{Track.connection.quote(params[:state])}"
+      conditions << "tracks.state = #{Track.connection.quote(params[:state])}"
     end
     unless params[:category].blank?
       options[:include] << :categories
