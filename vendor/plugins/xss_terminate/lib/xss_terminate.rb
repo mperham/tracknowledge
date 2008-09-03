@@ -37,7 +37,7 @@ module XssTerminate
         elsif xss_terminate_options[:sanitize].include?(field)
           self[field] = RailsSanitize.white_list_sanitizer.sanitize(value)
         else
-          self[field] = RailsSanitize.full_sanitizer.sanitize(value)
+          self[field] = HTML::FullSanitizer.new.sanitize(value)
         end
       end
     end

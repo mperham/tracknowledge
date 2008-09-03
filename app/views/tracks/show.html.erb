@@ -10,7 +10,7 @@
 		 <tr><th><%= prop.titleize %></th><td><%= h val %></td></tr>
 		<% end %>
 		<% if @track.length_in_km %>
-		 <tr><th>Length</th><td><%= @track.length_in_km %> km (<%= number_with_precision(@track.length_in_km/1.61, 2) %> mi)</td></tr>
+		 <tr><th>Length</th><td><%= @track.length_in_km %> km (<%= number_with_precision(@track.length_in_km/1.61, :precision => 2) %> mi)</td></tr>
 		<% end %>
 		<% if @track.wikipedia_url %>
 			<tr><th>Wikipedia</th><td><%= link_to @track.wikipedia_url.gsub(/http:\/\/en\.wikipedia\.org\/wiki\//, ''), @track.wikipedia_url, {:target => '_new'} %></a></td></tr>

@@ -50,7 +50,7 @@ require 'active_record/schema'
 require 'active_record/calculations'
 require 'active_record/serialization'
 require 'active_record/attribute_methods'
-require 'active_record/dirty'
+#require 'active_record/dirty'
 require 'active_record/dynamic_finder_match'
 
 ActiveRecord::Base.class_eval do
@@ -59,7 +59,7 @@ ActiveRecord::Base.class_eval do
   include ActiveRecord::Locking::Optimistic
   include ActiveRecord::Locking::Pessimistic
   include ActiveRecord::AttributeMethods
-  include ActiveRecord::Dirty
+#  include ActiveRecord::Dirty
   include ActiveRecord::Callbacks
   include ActiveRecord::Observing
   include ActiveRecord::Timestamp

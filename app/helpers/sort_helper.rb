@@ -125,7 +125,7 @@ module SortHelper
     else
       icon, order = nil, 'asc'
     end
-    text = Inflector::titleize(column) unless text
+    text = ActiveSupport::Inflector::titleize(column) unless text
     params = {:params => {:sort_key => column, :sort_order => order } }
     params = params.merge(options[:params]) if options[:params]
     link_to(text, params) +
@@ -153,7 +153,7 @@ module SortHelper
   #   </th>
   #
   def sort_header_tag(column, options = {})
-    text = options.delete(:text) || Inflector::titleize(column.humanize)
+    text = options.delete(:text) || ActiveSupport::Inflector::titleize(column.humanize)
     options[:title]= "Sort by #{text}" unless options[:title]
 #    text = options[:title] || options.delete(:text) || Inflector::titleize(column.humanize)
     content_tag('th', sort_link(column, text, options), options)
