@@ -8,7 +8,6 @@ module Fiveruns
     class Reporter
 
       def initialize
-        @dump = Mutex.new
         @config = ::Fiveruns::Manage::Plugin.target.configuration
         create_directory if start?
       end
@@ -38,29 +37,6 @@ module Fiveruns
         @config.report?
       end
       
-      def report
-        @dump.synchronize do
-          if @config.report?
-            begin
-              File.open(report_filename, 'a') do |f|
-                ::Fiveruns::Manage.sync do
-                  f.write(
-                    { :time => Time.now.utc,
-                      :data => Fiveruns::Manage.cache
-                    }.to_yaml
-                  )
-                end
-                f.chmod 0666
-              end
-            rescue Exception => e
-              ::Fiveruns::Manage.log :warn, "Could not write to #{report_filename}"
-            end
-          end
-        end
-      ensure
-        ::Fiveruns::Manage.sync { Fiveruns::Manage.clear }
-      end
-      
       def cleanup
         FileUtils.rm report_filename rescue nil
         FileUtils.rm info_filename rescue nil
@@ -70,6 +46,27 @@ module Fiveruns
       private
       #######
       
+      def report
+        if @config.report?
+          begin
+            data = ::Fiveruns::Manage.cache_snapshot
+
+            File.open(report_filename, 'a') do |f|
+              ::Fiveruns::Manage.sync do
+                f.write(
+                  { :time => Time.now.utc,
+                    :data => data
+                  }.to_yaml
+                )
+              end
+              f.chmod 0666
+            end
+          rescue Exception => e
+            ::Fiveruns::Manage.log :warn, "Could not write to #{report_filename}"
+          end
+        end
+      end
+
       def setup_file_removal!
         at_exit do
           if retain_files?
@@ -101,11 +98,9 @@ module Fiveruns
       end
 
       def start_report
-        @dump.synchronize do
-          if @config.report?
-            File.open(report_filename, 'w') do |f|
-              f.puts "# Started #{Time.now.utc.xmlschema}"
-            end
+        if @config.report?
+          File.open(report_filename, 'w') do |f|
+            f.puts "# Started #{Time.now.utc.xmlschema}"
           end
         end
       end
@@ -116,9 +111,7 @@ module Fiveruns
         FileUtils.mkdir_p path
         FileUtils.chmod 0777, path
       end
-      
+
     end
-    
   end
-  
 end

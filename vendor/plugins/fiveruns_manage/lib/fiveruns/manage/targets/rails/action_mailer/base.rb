@@ -8,7 +8,7 @@ module Fiveruns::Manage::Targets::Rails::ActionMailer
   
     module ClassMethods
       def receive_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :msg_recvs do
+        Fiveruns::Manage.tally :msg_recvs, nil, nil, nil do
           receive_without_fiveruns_manage(*args, &block)
         end
       end
@@ -16,7 +16,7 @@ module Fiveruns::Manage::Targets::Rails::ActionMailer
   
     module InstanceMethods
       def deliver_with_fiveruns_manage!(*args, &block)
-        Fiveruns::Manage.tally :msg_sents do
+        Fiveruns::Manage.tally :msg_sents, nil, nil, nil do
           deliver_without_fiveruns_manage!(*args, &block)
         end
       end

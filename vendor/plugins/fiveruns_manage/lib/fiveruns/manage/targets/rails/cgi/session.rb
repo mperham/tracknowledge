@@ -8,17 +8,17 @@ module Fiveruns::Manage::Targets::Rails::CGI
   
     module InstanceMethods
       def initialize_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :sess_creates do
+        Fiveruns::Manage.tally :sess_creates, nil, nil, nil do
           initialize_without_fiveruns_manage(*args, &block)
         end
       end
       def close_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :sess_closes do
+        Fiveruns::Manage.tally :sess_closes, nil, nil, nil do
           close_without_fiveruns_manage(*args, &block)
         end
       end
       def delete_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :sess_dels do
+        Fiveruns::Manage.tally :sess_dels, nil, nil, nil do
           delete_without_fiveruns_manage(*args, &block)
         end
       end

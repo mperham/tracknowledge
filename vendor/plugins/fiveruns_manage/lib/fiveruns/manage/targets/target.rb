@@ -83,9 +83,12 @@ module Fiveruns::Manage::Targets
       @instrumentation_sets ||= instrumentation_files.map do |filename|
         constant_path = filename[(instrumentation_path.size + 1)..-4]
         constant_name = path_to_constant_name(constant_path)
+        
+        require filename
+        instrumentation = "#{self.class}::#{constant_name}".constantize
+        next if instrumentation.respond_to?(:relevant?) && !instrumentation.relevant?
+        
         if (constant = constant_name.constantize rescue nil)
-          require filename
-          instrumentation = "#{self.class}::#{constant_name}".constantize
           [constant, instrumentation]
         else
           Fiveruns::Manage.log :debug, "#{constant_name} not found; skipping instrumentation."

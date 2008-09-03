@@ -37,6 +37,13 @@ module Fiveruns
       def self.[](major, minor, tiny)
         new(major, minor, tiny)
       end
+      
+      def self.rails
+        @rails ||= begin
+          # handle ::Rails::VERSION not being set
+          Version.new(::Rails::VERSION::MAJOR, ::Rails::VERSION::MINOR, ::Rails::VERSION::TINY) rescue Version.new(0,0,0)
+        end
+      end
 
       attr_reader :major, :minor, :tiny
 
@@ -68,14 +75,14 @@ module Fiveruns
 
       MAJOR = 1
       MINOR = 0
-      TINY  = 1
+      TINY  = 3
 
       # The current version as a Version instance
       CURRENT = new(MAJOR, MINOR, TINY)
       # The current version as a String
       STRING = CURRENT.to_s
       
-      DESCRIPTION = '1.0.1'
+      DESCRIPTION = '1.0.3'
       
     end
     

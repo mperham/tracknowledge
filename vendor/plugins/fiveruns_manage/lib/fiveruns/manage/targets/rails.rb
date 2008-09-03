@@ -103,9 +103,10 @@ module Fiveruns::Manage::Targets
     class Configuration < ::Fiveruns::Manage::Targets::Configuration
       
       attr_reader :environments, :report_environments
+      attr_writer :report_directory
       def initialize(&block)
-        @environments = %w(production development test)
-        @report_environments = %w(production development)
+        @environments = %w(production development staging test)
+        @report_environments = %w(production staging development)
         super
       end
       

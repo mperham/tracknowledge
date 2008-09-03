@@ -10,12 +10,12 @@ module Fiveruns::Manage::Targets::Rails::ActionController
       
       # Page Caching
       def cache_page_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :pages_caches do
+        Fiveruns::Manage.tally :pages_caches, nil, nil, nil do
           cache_page_without_fiveruns_manage(*args, &block)
         end
       end
       def expire_page_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :pages_expires do
+        Fiveruns::Manage.tally :pages_expires, nil, nil, nil do
           expire_page_without_fiveruns_manage(*args, &block)
         end
       end
@@ -28,7 +28,8 @@ module Fiveruns::Manage::Targets::Rails::ActionController
         ::Fiveruns::Manage::Plugin.reporter.start
         result = nil
         action = (request.parameters['action'] || 'index').to_s
-        Fiveruns::Manage.context = context = [:controller, (controller = self.class.name), :action, action]
+        Fiveruns::Manage.context = [:controller, (controller = self.class.name), :action, action]
+        context = [:controller, (controller = self.class.name)]
         time = Fiveruns::Manage.stopwatch { result = process_without_fiveruns_manage(request, *args, &block) }
         Fiveruns::Manage.metrics_in :action, context, [:name, action] do |metrics|
           metrics[:reqs] += 1
@@ -53,12 +54,12 @@ module Fiveruns::Manage::Targets::Rails::ActionController
       
       # Fragment Caching
       def write_fragment_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :frag_caches do
+        Fiveruns::Manage.tally :frag_caches, nil, nil, nil do
           write_fragment_without_fiveruns_manage(*args, &block)
         end
       end
       def expire_fragment_with_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.tally :frag_expires do
+        Fiveruns::Manage.tally :frag_expires, nil, nil, nil do
           expire_fragment_without_fiveruns_manage(*args, &block)
         end
       end

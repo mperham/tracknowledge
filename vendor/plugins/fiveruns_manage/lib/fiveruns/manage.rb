@@ -90,19 +90,6 @@ module Fiveruns
         Time.now - start
       end
     
-      def cache
-        @cache ||= []
-      end
-      
-      def cache_map
-        @cache_map ||= {}
-      end
-      
-      def clear
-        cache.clear
-        cache_map.clear
-      end
-        
       def namespace(container, context, properties)
         key = [container, context, properties]
         if (found = cache_map[key])
@@ -141,6 +128,29 @@ module Fiveruns
       end
       alias :metrics :metrics_in
       
+      def cache_snapshot
+        data = nil
+        sync do
+          data = cache
+          clear
+        end
+        data
+      end
+
+      private
+
+      def clear
+        @cache = []
+        @cache_map = {}
+      end
+
+      def cache
+        @cache ||= []
+      end
+
+      def cache_map
+        @cache_map ||= {}
+      end
     end
     
     class Namespace

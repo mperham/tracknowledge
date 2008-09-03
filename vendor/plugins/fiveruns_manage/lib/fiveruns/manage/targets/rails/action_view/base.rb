@@ -43,18 +43,6 @@ module Fiveruns::Manage::Targets::Rails::ActionView
       end
     end
   
-    def self.extract_partial_path(path)
-      case path
-      when String, Symbol, NilClass
-        path.to_s
-      when Array, 
-           ::ActiveRecord::Associations::AssociationCollection, 
-           ::ActiveRecord::Associations::HasManyThroughAssociation
-        return nil unless path.first
-        ::ActionController::RecordIdentifier.partial_path(path.first)
-      end
-    end
-  
     module InstanceMethods
       def render_file_with_fiveruns_manage(path, *args, &block)
         Fiveruns::Manage::Targets::Rails::ActionView::Base.record path, true do
@@ -72,16 +60,19 @@ module Fiveruns::Manage::Targets::Rails::ActionView
         options = args.first || {}
         path = case options
         when String
-          options
+          # Pre-Rails 2.1, don't record this as it causes duplicate records 
+          if Fiveruns::Manage::Version.rails < Fiveruns::Manage::Version.new(2,1,0)
+            record = false
+          else
+            options
+          end
         when :update
           block.to_s.split('/').last.split(':').first rescue ':update'
         when Hash
           if options[:file]
             options[:file].to_s
           elsif options[:partial]
-            # Don't record this as it causes duplicate records
             record = false
-          #   Fiveruns::Manage::Targets::Rails::ActionView::Base.extract_partial_path(options[:partial])
           elsif options[:inline]
             ':inline'
           elsif options[:text]
@@ -98,6 +89,13 @@ module Fiveruns::Manage::Targets::Rails::ActionView
           render_without_fiveruns_manage(*args, &block)
         end
       end
+            
+      # This works for partial view path normalization in 2.1.
+      # def fiveruns_normalize_partial_path(template_path)
+      #   template = ::ActionView::PartialTemplate.new(self, template_path, false, {})
+      #   full_extension = "." + template.filename.split('/').last.split('.', 2).last
+      #   template.path.gsub(full_extension, '')
+      # end
     end
     
   end

@@ -21,7 +21,7 @@ module Fiveruns::Manage::Targets::Rails::ActiveRecord
   
     def self.record_connection(model)
       result = yield
-      Fiveruns::Manage.metrics_in nil, Fiveruns::Manage.context, nil do |metrics|
+      Fiveruns::Manage.metrics_in nil, nil, nil do |metrics|
         metrics[:active_conns] = model.active_connections.size
       end
       connections = model.active_connections
@@ -50,31 +50,31 @@ module Fiveruns::Manage::Targets::Rails::ActiveRecord
       module InstanceMethods
       
         def begin_db_transaction_with_fiveruns_manage(*args, &block)
-          Fiveruns::Manage.tally :tx_starts do
+          Fiveruns::Manage.tally :tx_starts, nil, nil, nil do
             begin_db_transaction_without_fiveruns_manage(*args, &block)
           end
         end
       
         def commit_db_transaction_with_fiveruns_manage(*args, &block)
-          Fiveruns::Manage.tally :tx_commits do
+          Fiveruns::Manage.tally :tx_commits, nil, nil, nil do
             commit_db_transaction_without_fiveruns_manage(*args, &block)
           end
         end
       
         def rollback_db_transaction_with_fiveruns_manage(*args, &block)
-          Fiveruns::Manage.tally :tx_aborts do
+          Fiveruns::Manage.tally :tx_aborts, nil, nil, nil do
             rollback_db_transaction_without_fiveruns_manage(*args, &block)
           end
         end
       
         def initialize_with_fiveruns_manage(*args, &block)
-          Fiveruns::Manage.tally :creates do
+          Fiveruns::Manage.tally :creates, nil, nil, nil do
             initialize_without_fiveruns_manage(*args, &block)
           end
         end
       
         def disconnect_with_fiveruns_manage!(*args, &block)
-          Fiveruns::Manage.tally :disconnects do
+          Fiveruns::Manage.tally :disconnects, nil, nil, nil do
             disconnect_without_fiveruns_manage!(*args, &block)
           end
         end
@@ -95,7 +95,7 @@ module Fiveruns::Manage::Targets::Rails::ActiveRecord
       end
       def remove_connection_with_fiveruns_manage(*args, &block)
         result = remove_connection_without_fiveruns_manage(*args, &block)
-        Fiveruns::Manage.metrics_in nil, Fiveruns::Manage.context, nil do |metrics|
+        Fiveruns::Manage.metrics_in nil, nil, nil do |metrics|
           metrics[:removes] += 1
           metrics[:active_conns] = self.active_connections.size
         end

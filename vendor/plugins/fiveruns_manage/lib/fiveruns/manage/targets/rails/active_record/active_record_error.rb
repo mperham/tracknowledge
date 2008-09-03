@@ -29,8 +29,10 @@ module Fiveruns::Manage::Targets::Rails::ActiveRecord
         else # Unknown children of ActiveRecordError
           # :generic_errs
         end
-        if error_name
-          model_name = Fiveruns::Manage.current_model
+        model_name = Fiveruns::Manage.current_model
+        if error_name && model_name
+          # TODO We don't count errors if they happen outside of the current_model tracking.
+          # This does happen rarely.
           Fiveruns::Manage.tally error_name, :model, Fiveruns::Manage.context, [:name, model_name]
         end
         result
