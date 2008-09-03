@@ -58,8 +58,10 @@ class TracksController < ApplicationController
   def find_video_for(track)
     search = nil
     begin
-      search = Youtube::Video.find(:first, :params => {:vq => "#{@track.name} #{video_exclude}", :"max-results" => '5'})
-      (search && Integer(search.totalResults) > 0 ? search.entry : 'No videos found')
+      client = YouTubeG::Client.new
+      client.videos_by(:query => "#{@track.name} #{video_exclude}", :page => 1, :per_page => 5).videos
+      # search = Youtube::Video.find(:first, :params => {:vq => "#{@track.name} #{video_exclude}", :"max-results" => '5'})
+      # (search && Integer(search.totalResults) > 0 ? search.entry : 'No videos found')
     rescue => e
       ExceptionNotifier.deliver_exception_notification(e, self, request)
       'Sorry, the Youtube video search API is currently unavailable.'
