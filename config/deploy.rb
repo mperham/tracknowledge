@@ -14,3 +14,10 @@ set :use_sudo, false
 role :app, "www.tracknowledge.org"
 role :web, "www.tracknowledge.org"
 role :db,  "www.tracknowledge.org", :primary => true
+
+namespace :deploy do
+	desc "Restart Application"
+	task :restart, :roles => :app do
+		run "touch #{current_path}/tmp/restart.txt"
+	end
+end
