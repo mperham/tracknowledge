@@ -8,7 +8,7 @@ module Flickr
 end
 
 
-if RAILS_ENV == 'production'
+if RAILS_ENV != 'production'
   require 'ostruct'
   module Youtube
     class Video
