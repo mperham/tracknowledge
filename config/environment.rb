@@ -9,7 +9,6 @@ RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
-require 'flickr_fu'
 
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
@@ -42,7 +41,10 @@ Rails::Initializer.run do |config|
     :secret      => '55538da3290bfaf872608afd23e6e95c5b55539c169ad0ed8028e3bb0f2027b63d44f6940a7caefad8f2909171b8022f32da3ebe8bdc1ac1c37fe0d1158b7b62'
   }
 
+	config.gem 'mime-types', :lib => 'mime/types'
 	config.gem 'youtube-g', :lib => 'youtube_g'
+	config.gem 'flickr-fu', :lib => 'flickr_fu'
+	config.gem 'ruby-openid', :lib => 'openid'
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
