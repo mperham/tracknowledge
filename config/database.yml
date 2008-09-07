@@ -16,6 +16,6 @@ test:
 production:
   adapter: mysql
   username: root
-#  password: <%= File.exist?('/var/lib/mysql/.db-password') ? IO.read('/var/lib/mysql/.db-password').strip : '' %>
-  database: track_development
+  password: <%= File.exist?('/var/lib/mysql/.db-password') ? IO.read('/var/lib/mysql/.db-password').strip : '' %>
+  database: track_production
   socket: <%= %w(/var/lib/mysql/mysql.sock /tmp/mysql.sock).find { |val| File.exist?(val) } %>
