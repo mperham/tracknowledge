@@ -4,7 +4,7 @@ class TracksTest < ActionController::IntegrationTest
   fixtures :tracks, :track_blobs
   
   def setup
-    flexmock(Youtube::Video).should_receive(:find).once.and_return(youtube_mocks)
+    flexmock(YouTubeG::Client).should_receive(:videos_by).and_return(youtube_mocks)
   end
   
   def test_new_track
@@ -73,13 +73,11 @@ class TracksTest < ActionController::IntegrationTest
 
 
   def youtube_mocks
-    search = OpenStruct.new(:entry => [])
+    search = OpenStruct.new(:videos => [])
     5.times do |idx|
-      search.entry << OpenStruct.new(
-        :group => OpenStruct.new(
-          :player => OpenStruct.new(:url => "http://youtube.com/video#{idx}"),
-          :thumbnail => [OpenStruct.new(:url => "http://youtube.com/thumb#{idx}.jpg", :width => '130', :height => '97')]
-          ), 
+      search.videos << OpenStruct.new(
+        :thumbnails => [OpenStruct.new(:url => "http://youtube.com/thumb#{idx}.jpg", :width => '130', :height => '97')],
+        :player_url => "http://youtube.com/video#{idx}",
         :title => "Video #{idx}")
     end
     search
