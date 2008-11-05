@@ -3,9 +3,9 @@ require File.dirname(__FILE__) + '/../test_helper'
 class TrackTest < ActiveSupport::TestCase
   
   def test_validation
-    assert Track.create(valid_attributes).valid?
-    assert_not Track.create(valid_attributes.merge({:wikipedia_url => 'http://fr.wikipedia.org/wiki/Some_Track'})).valid?
-    assert_not Track.create(valid_attributes.merge({:turns => '1.2'})).valid?
+    assert Track.new(valid_attributes).valid?
+    assert_not Track.new(valid_attributes.merge({:wikipedia_url => 'http://fr.wikipedia.org/wiki/Some_Track'})).valid?
+    assert_not Track.new(valid_attributes.merge({:turns => '1.2'})).valid?
   end
   
   private
