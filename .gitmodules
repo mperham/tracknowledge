@@ -1,0 +1,3 @@
+[submodule "vendor/plugins/acts_as_versioned"]
+	path = vendor/plugins/acts_as_versioned
+	url = git://github.com/technoweenie/acts_as_versioned.git
