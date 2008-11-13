@@ -45,6 +45,7 @@ Rails::Initializer.run do |config|
 	config.gem 'youtube-g', :lib => 'youtube_g'
 	config.gem 'commonthread-flickr_fu', :lib => 'flickr_fu'
 	config.gem 'ruby-openid', :lib => 'openid'
+#	config.gem 'fiveruns_dash_rails'
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
