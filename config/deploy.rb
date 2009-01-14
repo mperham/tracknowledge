@@ -8,6 +8,7 @@ set :deploy_to, "/var/www/#{application}"
 
 default_run_options[:pty] = true
 set :scm, :git
+set :git_enable_submodules, true
 set :user, 'mike'
 set :use_sudo, false
 
