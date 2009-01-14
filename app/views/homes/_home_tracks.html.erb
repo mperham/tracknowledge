@@ -4,7 +4,7 @@
 		<table>
 			<tr><th>Name</th><th>Distance (mi)</th><th>Type</th></tr>
 			<% @closest.each_with_index do |track, index| %>
-			<tr <%= row_style(index) %>><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision track.distance, 1 %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
+			<tr <%= row_style(index) %>><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision(track.distance, :precision => 1) %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
 			<% end %>
 		</table>
 	<% else %>
