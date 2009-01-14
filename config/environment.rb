@@ -5,7 +5,7 @@
 # ENV['RAILS_ENV'] ||= 'production'
 
 # Specifies gem version of Rails to use when vendor/rails is not present
-RAILS_GEM_VERSION = '2.2.0' unless defined? RAILS_GEM_VERSION
+RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
 
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
@@ -30,7 +30,7 @@ Rails::Initializer.run do |config|
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
-  # config.log_level = :debug
+  #config.log_level = :debug
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
@@ -42,10 +42,10 @@ Rails::Initializer.run do |config|
   }
 
 	config.gem 'mime-types', :lib => 'mime/types'
-	config.gem 'youtube-g', :lib => 'youtube_g'
-	config.gem 'commonthread-flickr_fu', :lib => 'flickr_fu'
-	config.gem 'ruby-openid', :lib => 'openid'
-#	config.gem 'fiveruns_dash_rails'
+	config.gem 'youtube-g', :lib => 'youtube_g', :version => '0.4.9.9'
+	config.gem 'commonthread-flickr_fu', :lib => 'flickr_fu', :source => 'http://gems.github.com', :version => '0.1.6'
+	config.gem 'ruby-openid', :lib => 'openid', :version => '2.1.2'
+	config.gem 'fiveruns_dash_rails'
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
@@ -65,7 +65,7 @@ Rails::Initializer.run do |config|
   config.threadsafe!
 end
 
-ExceptionNotifier.exception_recipients = %w(mike@tracknowledge.org)
+ExceptionNotifier.exception_recipients = %w(mperham@gmail.com)
 
 # These defaults are used in GeoKit::Mappable.distance_to and in acts_as_mappable
 GeoKit::default_units = :miles

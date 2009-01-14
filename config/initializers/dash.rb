@@ -1,3 +1,4 @@
 if defined? Fiveruns::Dash
-  Fiveruns::Dash::Rails.configure :production => '93bef66a965b444d6ea8664ae5d9f5aa38874cbc'
+  ENV['DASH_UPDATE'] = 'https://dash-collector-staging.fiveruns.com'
+  Fiveruns::Dash::Rails.start :production => '13eaebd052c0ea96b0f63759bcd0ceb46a74ab02'
 end
