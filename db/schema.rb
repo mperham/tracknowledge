@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
     t.string   "country_code",  :limit => 3
     t.float    "lng"
     t.float    "lat"
+    t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "year_built"
     t.string   "designer",      :limit => 64

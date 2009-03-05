@@ -15,8 +15,11 @@ class TracksController < ApplicationController
   end
   
   def random
-    rand = Track.connection.select_value('SELECT FLOOR(RAND() * COUNT(*)) FROM tracks')
-    @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{rand},1").first
+    count = Integer(Track.connection.select_value('SELECT COUNT(*) FROM tracks'))
+    redirect_to root_url if count == 0
+
+    offset = rand(count)
+    @track = Track.find(:all, :conditions => 'tracks.status = 1', :limit => "#{offset},1").first
     redirect_to track_url(@track)
   end
   
