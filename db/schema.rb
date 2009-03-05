@@ -12,7 +12,7 @@
 ActiveRecord::Schema.define(:version => 20080903154938) do
 
   create_table "categories", :force => true do |t|
-    t.string "name", :limit => 32, :default => "", :null => false
+    t.string "name", :limit => 32, :null => false
   end
 
   create_table "clientperf_results", :force => true do |t|
@@ -43,12 +43,11 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
   create_table "track_versions", :force => true do |t|
     t.integer  "track_id"
     t.integer  "version"
-    t.string   "name",          :limit => 64,  :default => ""
+    t.string   "name",          :limit => 64
     t.string   "owner",         :limit => 128
-    t.string   "country_code",  :limit => 3,   :default => ""
+    t.string   "country_code",  :limit => 3
     t.float    "lng"
     t.float    "lat"
-    t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "year_built"
     t.string   "designer",      :limit => 64
@@ -56,7 +55,7 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
     t.string   "address",       :limit => 128
     t.string   "website",       :limit => 128
     t.string   "state",         :limit => 2
-    t.integer  "track_blob_id"
+    t.integer  "track_blob_id",                :default => 0
     t.string   "added_by",      :limit => 64,  :default => "tracknowledge.org",       :null => false
     t.string   "user_email",    :limit => 128, :default => "admin@tracknowledge.org", :null => false
     t.integer  "status",                       :default => 1,                         :null => false
@@ -66,21 +65,21 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
   end
 
   create_table "tracks", :force => true do |t|
-    t.string   "name",          :limit => 64,  :default => "",                        :null => false
+    t.string   "name",          :limit => 64,                                         :null => false
     t.string   "owner",         :limit => 128
-    t.string   "country_code",  :limit => 3,   :default => "",                        :null => false
+    t.string   "country_code",  :limit => 3,                                          :null => false
     t.float    "lng"
     t.float    "lat"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "version"
     t.integer  "year_built"
     t.string   "designer",      :limit => 64
     t.float    "length_in_km"
     t.string   "address",       :limit => 128
     t.string   "website",       :limit => 128
     t.string   "state",         :limit => 2
-    t.integer  "track_blob_id",                                                       :null => false
+    t.integer  "track_blob_id",                :default => 0,                         :null => false
+    t.integer  "version"
     t.string   "added_by",      :limit => 64,  :default => "tracknowledge.org",       :null => false
     t.string   "user_email",    :limit => 128, :default => "admin@tracknowledge.org", :null => false
     t.integer  "status",                       :default => 1,                         :null => false
@@ -90,12 +89,12 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",         :limit => 64,  :default => "", :null => false
-    t.string   "fullname",      :limit => 64,  :default => "", :null => false
-    t.string   "postcode",      :limit => 16,  :default => "", :null => false
-    t.string   "country",       :limit => 8,   :default => "", :null => false
-    t.string   "language",      :limit => 8,   :default => "", :null => false
-    t.string   "timezone",      :limit => 32,  :default => "", :null => false
+    t.string   "email",         :limit => 64,  :null => false
+    t.string   "fullname",      :limit => 64,  :null => false
+    t.string   "postcode",      :limit => 16,  :null => false
+    t.string   "country",       :limit => 8,   :null => false
+    t.string   "language",      :limit => 8,   :null => false
+    t.string   "timezone",      :limit => 32,  :null => false
     t.string   "password_hash", :limit => 64
     t.string   "openid_url",    :limit => 128
     t.integer  "role"
@@ -106,4 +105,5 @@ ActiveRecord::Schema.define(:version => 20080903154938) do
   end
 
   add_index "users", ["openid_url"], :name => "index_users_on_openid_url", :unique => true
+
 end
