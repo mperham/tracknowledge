@@ -50,6 +50,7 @@ Rails::Initializer.run do |config|
 	config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
 	config.gem 'andre-geokit', :lib => 'geokit', :source => 'http://gems.github.com'
   config.gem 'mperham-deadlock_retry', :lib => 'deadlock_retry', :source => 'http://gems.github.com'
+  config.gem 'grit'
 
   # Use the database for sessions instead of the cookie-based default,
   # which shouldn't be used to store highly confidential information
