@@ -1,5 +1,5 @@
 <% thumb = video.thumbnails.first -%>
 <li style="display: inline; float: right; width: <%= Integer(thumb.width) + 10 %>px">
-<%= link_to image_tag(thumb.url, :width => thumb.width, :height => thumb.height, :style => 'padding: 5px 5px;', :title => video.title), video.player_url, :target => '_new' %>
-<p style="font-size: 0.7em;"><%= video.title %></p>
+<%= link_to image_tag(thumb.url, :width => thumb.width, :height => thumb.height, :style => 'padding: 5px 5px;', :title => string(video.title)), video.player_url, :target => '_new' %>
+<p style="font-size: 0.7em;"><%= string(video.title) %></p>
 </li>

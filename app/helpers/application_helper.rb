@@ -27,4 +27,9 @@ module ApplicationHelper
       Track.count
     end
   end
+
+  def string(str)
+    @@iconv ||= Iconv.new('ascii//ignore', 'utf-8')
+    @@iconv.iconv(str + ' ')[0..-2]
+  end
 end

@@ -1,6 +1,11 @@
+<%
+  title = string(picture.title)
+  thumb = string(picture.url(:thumbnail))
+  page = string(picture.url(:photopage))
+ %>
 <li style="display: inline; float: right; width: 140px">
-<%= img = image_tag(picture.url(:thumbnail), :style => 'padding: 5px 5px; width: 100px;', :title => picture.title)
-    url = picture.url(:photopage)
-		link_to(img, url, :target => '_new') %>
-<p style="font-size: 0.7em;"><%= picture.title %></p>
+<%= img = image_tag(thumb, :style => 'padding: 5px 5px; width: 100px;', :title => title)
+    link_to(img, page, :target => '_new') %>
+<p style="font-size: 0.7em;"><%= title %></p>
 </li>
+

@@ -5,7 +5,7 @@ require 'rubygems'
 require 'flexmock/test_unit'
 require 'ostruct'
 
-class Test::Unit::TestCase
+class ActiveSupport::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
 

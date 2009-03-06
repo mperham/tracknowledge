@@ -45,9 +45,8 @@ Rails::Initializer.run do |config|
 	config.gem 'youtube-g', :lib => 'youtube_g', :source => 'http://gems.github.com'#, :version => '0.4.9.9'
 	config.gem 'commonthread-flickr_fu', :lib => 'flickr_fu', :source => 'http://gems.github.com'#, :version => '0.1.6'
 	config.gem 'ruby-openid', :lib => 'openid'#, :version => '2.1.2'
-#	config.gem 'json_pure', :lib => 'json'
-	config.gem 'fiveruns-dash-rails', :lib => 'fiveruns_dash_rails', :source => 'http://gems.github.com'
-	config.gem 'newrelic_rpm'
+  config.gem 'fiveruns-dash-rails', :lib => 'fiveruns_dash_rails', :source => 'http://gems.github.com'
+  config.gem 'newrelic_rpm'
 	config.gem 'mislav-will_paginate', :lib => 'will_paginate', :source => 'http://gems.github.com'
 	config.gem 'andre-geokit', :lib => 'geokit', :source => 'http://gems.github.com'
   config.gem 'mperham-deadlock_retry', :lib => 'deadlock_retry', :source => 'http://gems.github.com'
@@ -67,7 +66,7 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   config.active_record.default_timezone = :utc
-  config.threadsafe!
+  config.threadsafe! if Rails.env.production?
 end
 
 ExceptionNotifier.exception_recipients = %w(mperham@gmail.com)
