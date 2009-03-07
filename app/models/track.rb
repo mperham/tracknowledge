@@ -30,6 +30,14 @@ class Track < ActiveRecord::Base
     country_lookup(self.country_code)
   end
   
+  def distance
+    # (ACOS(least(1,COS(#{lat})*COS(#{lng})*COS(RADIANS(#{qualified_lat_column_name}))*COS(RADIANS(#{qualified_lng_column_name}))+
+    #                   COS(#{lat})*SIN(#{lng})*COS(RADIANS(#{qualified_lat_column_name}))*SIN(RADIANS(#{qualified_lng_column_name}))+
+    #                   SIN(#{lat})*SIN(RADIANS(#{qualified_lat_column_name}))))*#{multiplier})  end
+    
+    100
+  end
+
   def state_name
     self.state.blank? ? nil : state_lookup(self.state)
   end
