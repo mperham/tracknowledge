@@ -30,7 +30,7 @@ Rails::Initializer.run do |config|
 
   # Force all environments to use the same logger level
   # (by default production uses :info, the others :debug)
-  #config.log_level = :debug
+  config.log_level = :info
 
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
@@ -42,7 +42,8 @@ Rails::Initializer.run do |config|
   }
 
 #	config.gem 'mime-types', :lib => 'mime/types'
-	config.gem 'youtube-g', :lib => 'youtube_g', :source => 'http://gems.github.com'#, :version => '0.4.9.9'
+	config.gem 'mime-types', :lib => 'mime/types'
+	config.gem 'tmm1-youtube-g', :lib => 'youtube_g', :source => 'http://gems.github.com'#, :version => '0.4.9.9'
 	config.gem 'commonthread-flickr_fu', :lib => 'flickr_fu', :source => 'http://gems.github.com'#, :version => '0.1.6'
 	config.gem 'ruby-openid', :lib => 'openid'#, :version => '2.1.2'
   config.gem 'fiveruns-dash-rails', :lib => 'fiveruns_dash_rails', :source => 'http://gems.github.com'
@@ -70,4 +71,6 @@ Rails::Initializer.run do |config|
   config.threadsafe! if Rails.env.production?
 end
 
-ExceptionNotifier.exception_recipients = %w(mperham@gmail.com)
+p RAILS_DEFAULT_LOGGER
+RAILS_DEFAULT_LOGGER.flush
+RAILS_DEFAULT_LOGGER.auto_flushing = true
