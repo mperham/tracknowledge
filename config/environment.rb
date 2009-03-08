@@ -71,6 +71,5 @@ Rails::Initializer.run do |config|
   config.threadsafe! if Rails.env.production?
 end
 
-p RAILS_DEFAULT_LOGGER
-RAILS_DEFAULT_LOGGER.flush
-RAILS_DEFAULT_LOGGER.auto_flushing = true
+#RAILS_DEFAULT_LOGGER.flush
+#RAILS_DEFAULT_LOGGER.auto_flushing = true

@@ -1,5 +1,8 @@
 <div id="home_tracks"  style="float: left; width: 50%;">
 	<h2>Your Home Tracks</h2>
+	<% if @random %>
+	  <p>Uh oh, we couldn't find any tracks near you!  Usually that means we couldn't determine your location based on your IP address '<%= request.remote_ip %>'.  Here's five random tracks from our database instead.</p>
+	<% end %>
 	<% unless @closest.blank? %>
 		<table>
 			<tr><th>Name</th><th>Distance (mi)</th><th>Type</th></tr>
@@ -7,8 +10,6 @@
 			<tr <%= row_style(index) %>><td><%= link_to track.name, track_path(track) %></td><td><%= number_with_precision(track.distance, :precision => 1) %></td><td><%= track.categories.map(&:name).join(", ") %></td></tr>
 			<% end %>
 		</table>
-	<% else %>
-		<p>Uh oh, we couldn't find any tracks near you!  Usually that means we couldn't determine your location based on your IP address '<%= request.remote_ip %>'.  Sorry!</p>
 	<% end %>
 	<%= link_to 'View All Tracks...', search_path %>
 </div>

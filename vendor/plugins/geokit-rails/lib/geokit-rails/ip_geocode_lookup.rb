@@ -40,7 +40,9 @@ module Geokit
     # Returns the real ip address, though this could be the localhost ip
     # address.  No special handling here anymore.
     def get_ip_address
-      request.remote_ip
+      ip = request.remote_ip
+      ip = "71.41.203.90" if !ip || ip == '127.0.0.1'
+      ip
     end
   end
 end

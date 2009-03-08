@@ -1,9 +1,23 @@
 require 'state_helper'
 
+module Math
+  def max(a, b)
+    a > b ? a : b
+  end
+
+  def min(a, b)
+    a < b ? a : b
+  end
+end
+
 class Track < ActiveRecord::Base
+  include Math
+
   acts_as_mappable
   acts_as_versioned
   xss_terminate
+  
+  attr_accessor :distance
   
   # This blob should never be accessed directly.  Use #details instead
   # which will dynamically create the blob if necessary.
@@ -30,12 +44,25 @@ class Track < ActiveRecord::Base
     country_lookup(self.country_code)
   end
   
-  def distance
+  EARTH_RADIUS_IN_MILES = 3963.19
+  
+  def distance_from(loc)
+    llng = radians(loc.lng)
+    llat = radians(loc.lat)
     # (ACOS(least(1,COS(#{lat})*COS(#{lng})*COS(RADIANS(#{qualified_lat_column_name}))*COS(RADIANS(#{qualified_lng_column_name}))+
     #                   COS(#{lat})*SIN(#{lng})*COS(RADIANS(#{qualified_lat_column_name}))*SIN(RADIANS(#{qualified_lng_column_name}))+
     #                   SIN(#{lat})*SIN(RADIANS(#{qualified_lat_column_name}))))*#{multiplier})  end
-    
-    100
+    self.distance = (acos(min(1,cos(llat)*cos(llng)*cos(radians(lat))*cos(radians(lng))+
+        cos(llat)*sin(llng)*cos(radians(lat))*sin(radians(lng))+
+        sin(llat)*sin(radians(lat))))*EARTH_RADIUS_IN_MILES)
+  end
+  
+  def distance
+    @distance || 'Unknown'
+  end
+  
+  def radians(deg)
+    deg * Math::PI / 180
   end
 
   def state_name
