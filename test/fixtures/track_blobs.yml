@@ -8,12 +8,17 @@ indy_blob:
   
 daytona_blob:
   tags: daytona500
+  notes: x
 
 tws_blob:
   tags: texasworldspeedway
+  notes: x
 
 sepang_blob:
   tags: sepang
+  notes: x
 
 ironrock_blob:
   tags: ironrock
+  notes: x
+  

@@ -1,9 +1,7 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'test_help'
-require 'rubygems'
 require 'flexmock/test_unit'
-require 'ostruct'
 
 class ActiveSupport::TestCase
   self.use_transactional_fixtures = true

@@ -68,7 +68,7 @@ Rails::Initializer.run do |config|
 
   # Make Active Record use UTC-base instead of local time
   config.active_record.default_timezone = :utc
-  config.threadsafe! if Rails.env.production?
+  config.threadsafe! if RAILS_ENV == 'production'
 end
 
 #RAILS_DEFAULT_LOGGER.flush

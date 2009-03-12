@@ -20,6 +20,14 @@ class ApplicationController < ActionController::Base
   end
   
   def current_location
-    @user || session[:geo_location]
+    @user || begin
+      loc = session[:geo_location]
+      case loc
+      when YAML::Object
+        [loc.ivars[:lat],loc.ivars[:lng]]
+      else
+        loc
+      end
+    end
   end
 end

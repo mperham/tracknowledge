@@ -12,9 +12,9 @@ set :git_enable_submodules, true
 set :user, 'mike'
 set :use_sudo, false
 
-role :app, "perham"
-role :web, "perham"
-role :db,  "perham", :primary => true
+role :app, "tracknowledge.org"
+role :web, "tracknowledge.org"
+role :db,  "tracknowledge.org", :primary => true
 
 namespace :deploy do
 	desc "Restart Application"
