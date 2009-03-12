@@ -1,4 +1,4 @@
-set :application, "tracknowledge"
+set :application, "tracknowledge.org"
 set :repository,  "git://github.com/mperham/tracknowledge.git"
 
 # If you aren't deploying to /u/apps/#{application} on the target
